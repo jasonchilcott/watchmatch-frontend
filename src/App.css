@@ -36,3 +36,21 @@
     transform: rotate(360deg);
   }
 }
+.logo {
+  position: absolute;
+  left: 0px;
+  width: 128px;
+  padding: 20px;
+}
+.header {
+  height: 180px;
+  border-bottom-style: solid;
+  border-bottom-color: gray;
+  border-bottom-width: 1px;
+}
+
+.navbar {
+  position: absolute;
+  right: 0px;
+  padding: 60px;
+}
