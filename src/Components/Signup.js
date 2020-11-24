@@ -65,7 +65,7 @@ class Signup extends React.Component{
                 </br>
                 <br>
                 </br>
-                <input type="text" name="avatar" placeholder="URL of avatar" value={this.state.avatar_url} onChange={this.changeHandler} />
+                <input type="text" name="avatar_url" placeholder="URL of avatar" value={this.state.avatar_url} onChange={this.changeHandler} />
                 <br>
                 </br>
                 <br>

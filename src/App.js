@@ -1,12 +1,12 @@
 
 import './App.css';
 import React from "react"
-import {Route, Switch, withRouter } from 'react-router-dom'
+import { Route, Switch, withRouter } from 'react-router-dom'
 import Header from './Components/Header'
 import Signup from "./Components/Signup"
 import Login from "./Components/Login"
 import Rate from './Containers/Rate';
-import Profile from "./Containers/Profile"
+//import Profile from "./Containers/Profile"
 
 class App extends React.Component{
   state={
@@ -39,7 +39,7 @@ class App extends React.Component{
       .then(resp => resp.json())
       .then(data => {
         localStorage.setItem("token", data.jwt)
-        this.setState({user: data.user}, () => this.props.history.push(`/restaurants`) )
+        this.setState({user: data.user}, () => this.props.history.push(`/rate`) )
       },
     )
   }
@@ -57,6 +57,7 @@ class App extends React.Component{
       .then(resp => resp.json())
       .then(data => {
         localStorage.setItem("token", data.jwt)
+        console.log(data)
         this.setState({user: data.user}, () => this.props.history.push(`/rate`) )
       },
       )
@@ -68,13 +69,11 @@ class App extends React.Component{
     this.props.history.push("/login")
   }
 
-  showMeUser = () => {
-    console.log("In App.js, user is:", this.state.user)
-  }
+  
 
   render(){
 
-    this.showMeUser()
+    
 
     return (
       <div className="App">
@@ -84,7 +83,7 @@ class App extends React.Component{
             <Route path="/signup" render={()=> <Signup signUpHandler={this.signUpHandler}/>} />
             <Route path="/login" render={()=> <Login loginHandler={this.loginHandler} />} />
             <Route path="/rate" render={()=> <Rate user={this.state.user} />} />
-            <Route path="/profile" render={()=> <Profile user={this.state.user} />} />
+            {/* <Route path="/profile" render={()=> <Profile user={this.state.user} />} /> */}
             <Route path="/logout" render={()=> <Login loginHandler={this.loginHandler} /> }/>
 
           </Switch>
