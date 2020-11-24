@@ -43,6 +43,7 @@
   padding: 20px;
 }
 .header {
+  font-family: 'Helvetica Now', 'Helvetica Neue', 'Helvetica';
   height: 180px;
   border-bottom-style: solid;
   border-bottom-color: gray;
