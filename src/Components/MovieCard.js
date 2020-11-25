@@ -10,10 +10,10 @@ class MovieCard extends React.Component {
     rating: 0
   }
 
-  // componentDidMount(){
-  //   this.fetchRating()
-  //   console.log(this.props)
-  // }
+  componentDidMount(){
+    this.getRating()
+    //console.log(this.props.user.ratings)
+  }
 
   // fetchRating = () => {
   //   let ratingObj = {
@@ -40,6 +40,17 @@ class MovieCard extends React.Component {
 
   // }
 
+  getRating = () => {
+    const ratings = this.props.user.ratings
+    const movie = this.props.movie
+    if (ratings.some(rating => rating.movie_id === movie.id)){
+      let thisRating = ratings.find(rating => rating.movie_id === movie.id)
+      console.log(thisRating.stars)
+      this.setState({rating: thisRating.stars})
+      
+    }
+  }
+
 
 
 
@@ -63,13 +74,10 @@ class MovieCard extends React.Component {
                 ratingObj
               )
           })
-          .then(resp=> resp.json())
-          .then(r => console.log(r)
-          )
+          .then(resp => console.log(resp))
+          .then(r => console.log(r))
           .catch(error => console.log("Error", error))
   }
-   
-  
 
 
 
