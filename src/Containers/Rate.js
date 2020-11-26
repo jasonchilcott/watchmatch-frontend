@@ -40,7 +40,7 @@ class Rate extends React.Component {
   };
 
   addMoviesToDB = (movies) => {
-    movies.map((movie) => {
+    movies.forEach((movie) => {
       let moviesObj = {
         api_id: movie.id,
         title: movie.title,
@@ -90,6 +90,7 @@ class Rate extends React.Component {
   };
 
   render() {
+    console.log(this.props)
     return (
       <>
         <Search searchDoer={this.searchDoer} />

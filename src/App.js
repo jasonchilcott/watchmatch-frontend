@@ -10,7 +10,7 @@ import Rate from './Containers/Rate';
 
 class App extends React.Component{
   state={
-    user: null,
+    user: {},
   }
 
   componentDidMount() {
@@ -65,7 +65,7 @@ class App extends React.Component{
 
   logMeOut = () => {
     localStorage.removeItem("token")
-    this.setState({user: null})
+    this.setState({user: {}})
     this.props.history.push("/login")
   }
 
@@ -73,7 +73,7 @@ class App extends React.Component{
 
   render(){
 
-    
+    console.log(this.state)
 
     return (
       <div className="App">

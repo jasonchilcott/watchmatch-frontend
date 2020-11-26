@@ -6,49 +6,28 @@ import ReactStars from "react-rating-stars-component";
 class MovieCard extends React.Component {
 
   state = {
-    
-    rating: 0
+    userRatingId: null,
+    stars: 0
   }
 
   componentDidMount(){
     this.getRating()
-    //console.log(this.props.user.ratings)
+
   }
 
-  // fetchRating = () => {
-  //   let ratingObj = {
-  //     movie_id: this.props.movie.id,
-  //     //user_id: this.props.user.id,
-      
-  //   }
-  //   const token = localStorage.getItem("token")
-  //   fetch('http://localhost:3000/api/v1/ratings',{
-  //             method: 'GET',
-  //             headers: {
-  //                 Authorization: `Bearer ${token}`,
-  //                 'Content-Type': 'application/json',
-  //                 Accept: 'application/json'
-  //             },
-  //             body: JSON.stringify(
-  //               ratingObj
-  //             )
-  //         })
-  //         .then(resp=> resp.json())
-  //         .then(r => console.log(r)
-  //         )
-  //         .catch(error => console.log("Error", error))
-
-  // }
 
   getRating = () => {
+    if (this.props.user) {
     const ratings = this.props.user.ratings
     const movie = this.props.movie
     if (ratings.some(rating => rating.movie_id === movie.id)){
       let thisRating = ratings.find(rating => rating.movie_id === movie.id)
-      console.log(thisRating.stars)
-      this.setState({rating: thisRating.stars})
+      this.setState({ 
+        userRatingId: thisRating.id,
+        stars: thisRating.stars
+      })
       
-    }
+    }}
   }
 
 
@@ -56,14 +35,35 @@ class MovieCard extends React.Component {
 
 
   starHandler = (rating) => {
-    this.setState({ rating: rating})
     let ratingObj = {
       movie_id: this.props.movie.id,
       user_id: this.props.user.id,
       stars: rating
     }
     const token = localStorage.getItem("token")
-    fetch('http://localhost:3000/api/v1/ratings',{
+
+    if ( this.state.userRatingId && (this.state.stars !== rating) ) {
+      fetch(`http://localhost:3000/api/v1/ratings/${this.state.userRatingId}`,{
+              method: 'PATCH',
+              headers: {
+                  Authorization: `Bearer ${token}`,
+                  'Content-Type': 'application/json',
+                  Accept: 'application/json'
+              },
+              body: JSON.stringify(
+                {stars: rating}
+              )
+          })
+          .then(resp => resp.json())
+          .then(rating => this.setState({
+            stars: rating.stars
+          }))
+
+      
+
+
+    } else {
+      fetch('http://localhost:3000/api/v1/ratings',{
               method: 'POST',
               headers: {
                   Authorization: `Bearer ${token}`,
@@ -74,10 +74,21 @@ class MovieCard extends React.Component {
                 ratingObj
               )
           })
-          .then(resp => console.log(resp))
-          .then(r => console.log(r))
-          .catch(error => console.log("Error", error))
+          .then(resp => resp.json())
+          .then(rating => this.setState({
+            userRatingId: rating.id,
+            stars: rating.stars
+          }))
+
+
+    }
+    
+
+
+    
   }
+
+  
 
 
 
@@ -98,7 +109,7 @@ class MovieCard extends React.Component {
                     <ReactStars
                       className="stars"
                       count={5}
-                      value={this.state.rating}
+                      value={this.state.stars}
                       isHalf={true}
                       onChange={this.starHandler}
                       size={24}
