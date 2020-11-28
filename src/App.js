@@ -58,7 +58,6 @@ class App extends React.Component{
       .then(resp => resp.json())
       .then(data => {
         localStorage.setItem("token", data.jwt)
-        console.log(data)
         this.setState({user: data.user}, () => this.props.history.push(`/rate`) )
       },
       )
@@ -74,7 +73,7 @@ class App extends React.Component{
 
   render(){
 
-    console.log(this.state)
+    
 
     return (
       <div className="App">

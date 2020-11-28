@@ -43,6 +43,7 @@ class MovieCard extends React.Component {
     const token = localStorage.getItem("token")
 
     if ( this.state.userRatingId && (this.state.stars !== rating) ) {
+      console.log("patch")
       fetch(`http://localhost:3000/api/v1/ratings/${this.state.userRatingId}`,{
               method: 'PATCH',
               headers: {
@@ -62,7 +63,8 @@ class MovieCard extends React.Component {
       
 
 
-    } else {
+    } else if (!this.state.userRatingId) {
+      console.log("post", rating, this.state.stars, )
       fetch('http://localhost:3000/api/v1/ratings',{
               method: 'POST',
               headers: {
