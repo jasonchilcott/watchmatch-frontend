@@ -10,7 +10,7 @@ class MovieCard extends React.Component {
     stars: 0
   }
 
-  componentDidMount(){
+  componentWillMount(){
     this.getRating()
 
   }
@@ -100,6 +100,7 @@ class MovieCard extends React.Component {
   render() {
     const movie = this.props.movie
     let poster_url = "no_poster.png"
+
     if (movie.poster_path) {
       poster_url = `https://image.tmdb.org/t/p/w185${movie.poster_path}`
     }
