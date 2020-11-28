@@ -70,6 +70,8 @@ class Rate extends React.Component {
     });
   };
 
+  
+
   fetchMoreDoer = () => {
     this.setState(
       {
