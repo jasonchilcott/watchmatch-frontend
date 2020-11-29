@@ -1,5 +1,6 @@
 import React from "react";
 import ReactStars from "react-rating-stars-component";
+import RatingsContainer from './RatingsContainer'
 
 class MoviePage extends React.Component {
   state = {
@@ -12,11 +13,11 @@ class MoviePage extends React.Component {
 
   getRating = () => {
     if (this.props.user) {
-    const ratings = this.props.user.ratings
+    
     const movie = this.state.movie
-    console.log(ratings, movie)
-    if (ratings.some(rating => rating.movie_id === movie.id)){
-      let thisRating = ratings.find(rating => rating.movie_id === movie.id)
+    
+    if (this.props.user.ratings.some(rating => rating.movie_id === movie.id)){
+      let thisRating = this.props.user.ratings.find(rating => rating.movie_id === movie.id)
       this.setState({ 
         userRatingId: thisRating.id,
         stars: thisRating.stars
@@ -128,7 +129,7 @@ class MoviePage extends React.Component {
       <div className="movie-page" key={movie.id}>
         
           <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title}/>
-          <h2>{movie.title}</h2>
+          <h1>{movie.title}</h1>
 
         
           <ReactStars
@@ -140,6 +141,11 @@ class MoviePage extends React.Component {
             size={24}
             activeColor="#ff0000"
           />
+
+      <p>{movie.overview}</p>
+      <br/>
+      <RatingsContainer movie={movie}/>
+      
       </div>
       }
     </>

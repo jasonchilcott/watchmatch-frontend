@@ -18,6 +18,8 @@ class Rate extends React.Component {
   fetchMovies = () => {
     //const movieUrl = `https://api.themoviedb.org/3/search/movie?api_key=a3c8a67818b95d395055b1c64330a5d4&query=${this.state.search}&page=${this.state.page}&include_adult=false`
     const movieUrl = `https://api.themoviedb.org/4/list/7065199?page=${this.state.page}&api_key=a3c8a67818b95d395055b1c64330a5d4`;
+    // v3: https://api.themoviedb.org/3/list/7065199?api_key=a3c8a67818b95d395055b1c64330a5d4&language=en-US
+
     fetch(
       movieUrl //, {
       //     headers: {

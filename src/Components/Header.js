@@ -8,7 +8,7 @@ const Header = (props) => {
         <a href="/">
         <img className="logo" src="/watchmatch-logo.png" alt="watchmatch logo"/>
         </a>
-        <Navbar />
+        <Navbar user={props.user} logMeOut={props.logMeOut}/>
     </header>
     )
 }

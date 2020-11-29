@@ -86,7 +86,7 @@ class App extends React.Component{
             <Route path="/"  exact render={()=> <Rate user={this.state.user} />} />
             <Route path="/movies" render={()=> <MovieShow user={this.state.user} />} />
             {/* <Route path="/profile" render={()=> <Profile user={this.state.user} />} /> */}
-            <Route path="/logout" render={()=> <Login loginHandler={this.loginHandler} /> }/>
+            <Route path="/logout" render={()=> <Login loginHandler={this.loginHandler} logMeOut={this.logMeOut}/> }/>
 
           </Switch>
         </div>

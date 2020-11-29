@@ -1,4 +1,5 @@
 import React from "react"
+import { NavLink } from 'react-router-dom'
 
 class Signup extends React.Component{
     state={
@@ -73,6 +74,10 @@ class Signup extends React.Component{
                 <input type="submit" value="sign up"/>
             
             </form>
+            <br/>
+            <NavLink to="/login">
+             OR LOG IN
+          </NavLink>
 
             </div>
             </>
