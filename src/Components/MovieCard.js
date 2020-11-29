@@ -1,5 +1,6 @@
 import React from "react"
 import ReactStars from "react-rating-stars-component";
+import { NavLink } from 'react-router-dom'
 
 
 
@@ -10,7 +11,7 @@ class MovieCard extends React.Component {
     stars: 0
   }
 
-  componentWillMount(){
+  componentWillMount() {
     this.getRating()
 
   }
@@ -107,8 +108,11 @@ class MovieCard extends React.Component {
     return(
         <>
                 <div className="movie-card" key={movie.id}>
+                  <NavLink to={`movies/${movie.id}`} user={this.props.user} movie={movie}>
                     <img src={poster_url} alt={movie.title}/>
                     <h2>{movie.title}</h2>
+
+                  </NavLink>
                     <ReactStars
                       className="stars"
                       count={5}

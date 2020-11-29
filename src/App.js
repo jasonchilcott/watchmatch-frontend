@@ -6,7 +6,7 @@ import Header from './Components/Header'
 import Signup from "./Components/Signup"
 import Login from "./Components/Login"
 import Rate from './Containers/Rate';
-import MoviePage from './Containers/MoviePage.js'
+import MovieShow from './Containers/MovieShow.js'
 //import Profile from "./Containers/Profile"
 
 class App extends React.Component{
@@ -83,8 +83,8 @@ class App extends React.Component{
             <Route path="/signup" render={()=> <Signup signUpHandler={this.signUpHandler}/>} />
             <Route path="/login" render={()=> <Login loginHandler={this.loginHandler} />} />
             <Route path="/rate" render={()=> <Rate user={this.state.user} />} />
-            <Route path="/" render={()=> <Rate user={this.state.user} />} />
-            <Route path="/movies/:id" render={()=> <MoviePage user={this.state.user} />} />
+            <Route path="/"  exact render={()=> <Rate user={this.state.user} />} />
+            <Route path="/movies" render={()=> <MovieShow user={this.state.user} />} />
             {/* <Route path="/profile" render={()=> <Profile user={this.state.user} />} /> */}
             <Route path="/logout" render={()=> <Login loginHandler={this.loginHandler} /> }/>
 
