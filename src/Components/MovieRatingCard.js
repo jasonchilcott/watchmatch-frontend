@@ -48,7 +48,7 @@ class MovieRatingCard extends React.Component {
         
                 <div className="rating-card" key={this.props.id}>
 
-                  <NavLink  to={`users/${this.state.user.id}`} currentUser={this.props.user} >
+                  <NavLink  to={`/users/${this.state.user.id}`} currentUser={this.props.user} >
 
                 <p>{this.state.user.username}: </p>
                   </NavLink>
