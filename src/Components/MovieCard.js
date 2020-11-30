@@ -8,7 +8,7 @@ class MovieCard extends React.Component {
 
   state = {
     userRatingId: null,
-    stars: 0
+    stars: (this.props.rating ? this.props.rating.stars : 0 )
   }
 
   componentWillMount() {
@@ -101,6 +101,7 @@ class MovieCard extends React.Component {
   render() {
     const movie = this.props.movie
     let poster_url = "no_poster.png"
+    console.log(this.props.rating)
 
     if (movie.poster_path) {
       poster_url = `https://image.tmdb.org/t/p/w185${movie.poster_path}`

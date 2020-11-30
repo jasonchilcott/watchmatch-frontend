@@ -5,7 +5,7 @@ import MovieRatingsContainer from './MovieRatingsContainer'
 class MoviePage extends React.Component {
   state = {
     userRatingId: null,
-    stars: this.props.rating.stars
+    stars: (this.props.rating ? this.props.rating.stars : 0 )
   };
 
   
@@ -14,7 +14,7 @@ class MoviePage extends React.Component {
   getRating = () => {
     if (this.props.user) {
     
-    const movie = this.state.movie
+    const movie = this.props.movie
     
     if (this.props.user.ratings.some(rating => rating.movie_id === movie.id)){
       let thisRating = this.props.user.ratings.find(rating => rating.movie_id === movie.id)
@@ -51,7 +51,7 @@ class MoviePage extends React.Component {
           }))
           
         )
-        .then(() => this.getRating())
+        //.then(() => this.getRating())
         
         .catch((error) => console.error(error));
 

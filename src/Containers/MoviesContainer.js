@@ -10,7 +10,7 @@ class MoviesContainer extends React.Component{
         if (user.ratings){
         rating = user.ratings.find(rating => rating.movie_id === movie.id)
       }
-    return <MovieCard key={movie.id} movie={movie} user={user}/>
+    return <MovieCard key={movie.id} movie={movie} rating={rating} user={user}/>
   })
 
   render() {
