@@ -12,7 +12,7 @@ class Matches extends React.Component {
       <>
         
         {/* <InfiniteScroll
-                dataLength={this.state.restaurants.length} //This is important field to render the next data
+                dataLength={this.state.matches.length} //This is important field to render the next data
                 next={() => console.log("hit bottom")}
                 hasMore={true}
                 loader={<h4>Loading...</h4>}
@@ -23,7 +23,7 @@ class Matches extends React.Component {
                 }
             > */}
         {this.state.matches ? (
-          //<MatchesContainer movies={this.state.movies} user={this.props.user} />
+          //<MatchesContainer matches={this.state.matches} user={this.props.user} />
           <h1>Matches</h1>
         ) : (
           <h4>Loading...</h4>
