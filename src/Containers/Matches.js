@@ -3,9 +3,86 @@ import React from "react";
 class Matches extends React.Component {
 
   state ={
-    matches: {}
+    matches: []
   }
 
+  componentDidMount() {
+    this.fetchUsers()
+    
+
+  }
+
+  fetchUsers = () => {
+    
+      const token = localStorage.getItem("token");
+      
+
+      fetch("http://localhost:3000/api/v1/users", {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        
+      })
+        .then((r) => r.json())
+        .then((allUsers) =>
+        this.filterAllUsers(allUsers)
+          // this.setState(() => ({
+          //   allUsers: [...users],
+          // }))
+        )
+
+        .catch((error) => console.error(error));
+    
+  };
+
+
+  sharedMovies = (user) => {
+    const currentUserMovies = this.props.user.ratings.map((rating) => rating.movie_id)
+    return user.ratings.filter(rating => currentUserMovies.includes(rating.movie_id))
+  }
+
+  haveSharedMovies = (users) => {
+    if (this.props.user.ratings) {
+      const currentUserMovies = this.props.user.ratings.map((rating) => rating.movie_id)
+      
+      let filteredUsers = []
+
+      users.forEach(user => {
+        user.ratings.forEach(rating => {
+          if (currentUserMovies.includes(rating.movie_id)){
+            filteredUsers.push(user)
+          }
+        })
+
+      })
+      let unique = [...new Set(filteredUsers)]
+      return unique
+      // return users.filter(user => 
+      //   (
+      //     (user.ratings.some(rating => rating.movie_id)).includes(currentUserMovies)
+          
+      //   ))
+    }
+  }
+
+
+  
+
+  filterAllUsers = (users) => {
+    const currentUser = this.props.user
+    const usersMinusSelf = users.filter(user => user.id !== currentUser.id)
+    const filteredUsers = this.haveSharedMovies(usersMinusSelf)
+    console.log(filteredUsers)
+    this.setState(() => ({matches: [...filteredUsers]}))
+  }
+
+  // let intersection = user.ratings.filter(rating => currentUserMovies.includes(rating.movie_id))
+
+
+  
   render() {
     
     return (
@@ -22,7 +99,7 @@ class Matches extends React.Component {
                 </p>
                 }
             > */}
-        {this.state.matches ? (
+        {this.state.matches.length > 0 ? (
           //<MatchesContainer matches={this.state.matches} user={this.props.user} />
           <h1>Matches</h1>
         ) : (
