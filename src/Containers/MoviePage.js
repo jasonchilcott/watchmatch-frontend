@@ -5,7 +5,7 @@ import MovieRatingsContainer from './MovieRatingsContainer'
 class MoviePage extends React.Component {
   state = {
     userRatingId: null,
-    stars: 0
+    stars: this.props.rating.stars
   };
 
   

@@ -5,7 +5,12 @@ class MoviesContainer extends React.Component{
 
 
   renderMovies = () => this.props.movies.map((movie) => {
-    return <MovieCard key={movie.id} movie={movie} user={this.props.user}/>
+    const user = this.props.user
+    let rating = 0
+        if (user.ratings){
+        rating = user.ratings.find(rating => rating.movie_id === movie.id)
+      }
+    return <MovieCard key={movie.id} movie={movie} user={user}/>
   })
 
   render() {

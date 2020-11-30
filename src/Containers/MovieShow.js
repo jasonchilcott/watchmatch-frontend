@@ -14,9 +14,13 @@ class MovieShow extends React.Component {
       <>
       
       <Route path='/movies/:id' render={({ match }) => {
-        let id = parseInt(match.params.id) 
+        const id = parseInt(match.params.id) 
+        let rating = 0
+        if (this.props.user.ratings){
+        rating = this.props.user.ratings.find(rating => rating.movie_id === id)
+      }
         
-        return <MoviePage id={id} user={this.props.user}/>
+        return <MoviePage id={id} rating={rating} user={this.props.user}/>
       }} />
       </>
     )
