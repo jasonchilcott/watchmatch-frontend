@@ -1,6 +1,6 @@
 import React from "react";
 import ReactStars from "react-rating-stars-component";
-import RatingsContainer from './RatingsContainer'
+import MovieRatingsContainer from './MovieRatingsContainer'
 
 class MoviePage extends React.Component {
   state = {
@@ -144,7 +144,7 @@ class MoviePage extends React.Component {
 
       <p>{movie.overview}</p>
       <br/>
-      <RatingsContainer movie={movie}/>
+      <MovieRatingsContainer movie={movie}/>
       
       </div>
       }

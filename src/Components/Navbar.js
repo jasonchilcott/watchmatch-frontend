@@ -16,7 +16,7 @@ class Navbar extends React.Component{
           </NavLink>
         </li>
         <li>
-          <NavLink activeClassName="active" to="/profile">
+          <NavLink activeClassName="active" to="/profile" profileId={this.props.user.id} currentUser={this.props.user}>
             PROFILE
           </NavLink>
         </li>

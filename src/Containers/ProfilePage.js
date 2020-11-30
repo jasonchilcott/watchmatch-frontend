@@ -13,8 +13,9 @@ class ProfilePage extends React.Component {
 
   fetchProfile = () => {
     const token = localStorage.getItem("token");
+    console.log(this.props)
 
-      fetch(`http://localhost:3000/api/v1/users/${this.props.profile_id}`, {
+      fetch(`http://localhost:3000/api/v1/users/${this.props.profileId}`, {
         method: "GET",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -43,8 +44,10 @@ class ProfilePage extends React.Component {
       
       <div className="profile-page" key={profile.id}>
         
-          
-          <h1>{profile.username}</h1>
+        <img className="avatar" src={`${profile.avatar_url}`} alt={`${profile.username}'s avatar`}/>
+        <h1 className="profile-username">{profile.username}</h1>
+        <h3 className="profile-one-line">{profile.one_line}</h3>
+        <p className="profile-detailed-bio">{profile.detailed_bio}</p>
       </div>
       }
     </>

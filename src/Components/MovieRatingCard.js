@@ -1,10 +1,10 @@
 import React from "react"
-import ReactStars from "react-rating-stars-component";
+ import ReactStars from "react-rating-stars-component";
 import { NavLink } from 'react-router-dom'
 
 
 
-class RatingCard extends React.Component {
+class MovieRatingCard extends React.Component {
 
   state = {
     
@@ -47,23 +47,23 @@ class RatingCard extends React.Component {
         {!this.state.user ? <h1>Loading</h1> : 
         
                 <div className="rating-card" key={this.props.id}>
-    <p>{this.state.user.username}: {this.props.stars} stars</p>
+
+                  <NavLink  to={`users/${this.state.user.id}`} currentUser={this.props.user} >
+
+                <p>{this.state.user.username}: </p>
+                  </NavLink>
         
 
-                  {/* <NavLink to={`movies/${movie.id}`} user={this.props.user} movie={movie}>
-                    <img src={poster_url} alt={movie.title}/>
-                    <h2>{movie.title}</h2>
-
-                  </NavLink>
+                  
                     <ReactStars
                       className="stars"
                       count={5}
-                      value={this.state.stars}
+                      edit={false}
+                      value={this.props.stars}
                       isHalf={true}
-                      onChange={this.starHandler}
                       size={24}
                       activeColor="#ff0000"
-                    /> */}
+                    />
                 </div>
         }
               </>
@@ -71,4 +71,4 @@ class RatingCard extends React.Component {
           }
         
 }
-export default RatingCard
+export default MovieRatingCard

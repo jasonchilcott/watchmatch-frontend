@@ -16,11 +16,11 @@ class ProfileShow extends React.Component {
       <Route path='/users/:id' render={({ match }) => {
         let id = parseInt(match.params.id) 
         
-        return <ProfilePage profile_id={id} current_user={this.props.user}/>
+        return <ProfilePage profileId={id} currentUser={this.props.user}/>
       }} />
       <Route path='/profile' exact render={() => {
         
-        return <ProfilePage profile_id={this.props.user.id} current_user={this.props.user}/>
+        return <ProfilePage profileId={this.props.user.id} currentUser={this.props.user}/>
       }} />
 
       </Switch>
