@@ -7,7 +7,8 @@ import Signup from "./Components/Signup"
 import Login from "./Components/Login"
 import Rate from './Containers/Rate';
 import MovieShow from './Containers/MovieShow.js'
-//import Profile from "./Containers/Profile"
+import ProfileShow from './Containers/ProfileShow.js'
+
 
 class App extends React.Component{
   state={
@@ -85,7 +86,8 @@ class App extends React.Component{
             <Route path="/rate" render={()=> <Rate user={this.state.user} />} />
             <Route path="/"  exact render={()=> <Rate user={this.state.user} />} />
             <Route path="/movies" render={()=> <MovieShow user={this.state.user} />} />
-            {/* <Route path="/profile" render={()=> <Profile user={this.state.user} />} /> */}
+            <Route path="/users" render={()=> <ProfileShow user={this.state.user} />} />
+            <Route path="/profile" exact render={()=> <ProfileShow user={this.state.user} />} /> 
             <Route path="/logout" render={()=> <Login loginHandler={this.loginHandler} logMeOut={this.logMeOut}/> }/>
 
           </Switch>
