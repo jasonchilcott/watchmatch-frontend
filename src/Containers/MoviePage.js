@@ -128,8 +128,8 @@ class MoviePage extends React.Component {
       
       <div className="movie-page" key={movie.id}>
         
-          <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title}/>
-          <h1>{movie.title}</h1>
+          <img className="movie-page-poster" src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title}/>
+          <h1 className="movie-page-title" >{movie.title}</h1>
 
         
           <ReactStars
@@ -142,7 +142,7 @@ class MoviePage extends React.Component {
             activeColor="#ff0000"
           />
 
-      <p>{movie.overview}</p>
+      <p className="movie-page-overview" >{movie.overview}</p>
       <br/>
       <MovieRatingsContainer movie={movie}/>
       

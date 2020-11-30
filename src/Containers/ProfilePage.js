@@ -1,5 +1,5 @@
 import React from "react";
-
+import ProfileRatingsContainer from './ProfileRatingsContainer'
 
 
 class ProfilePage extends React.Component {
@@ -13,7 +13,7 @@ class ProfilePage extends React.Component {
 
   fetchProfile = () => {
     const token = localStorage.getItem("token");
-    console.log(this.props)
+    
 
       fetch(`http://localhost:3000/api/v1/users/${this.props.profileId}`, {
         method: "GET",
@@ -44,10 +44,12 @@ class ProfilePage extends React.Component {
       
       <div className="profile-page" key={profile.id}>
         
-        <img className="avatar" src={`${profile.avatar_url}`} alt={`${profile.username}'s avatar`}/>
+        <img className="profile-avatar" src={`${profile.avatar_url}`} alt={`${profile.username}'s avatar`}/>
         <h1 className="profile-username">{profile.username}</h1>
         <h3 className="profile-one-line">{profile.one_line}</h3>
         <p className="profile-detailed-bio">{profile.detailed_bio}</p>
+        <br/>
+      <ProfileRatingsContainer profile={profile} user={this.props.user}/>
       </div>
       }
     </>

@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom'
 
 
 
-class MovieRatingCard extends React.Component {
+class ProfileRatingCard extends React.Component {
 
   state = {
     
@@ -12,15 +12,15 @@ class MovieRatingCard extends React.Component {
   }
 
   componentDidMount() {
-    this.fetchUser()
+    this.fetchMovie()
 
   }
 
 
-  fetchUser = () => {
+  fetchMovie = () => {
     const token = localStorage.getItem("token");
 
-      fetch(`http://localhost:3000/api/v1/users/${this.props.user_id}`, {
+      fetch(`http://localhost:3000/api/v1/movies/${this.props.movie_id}`, {
         method: "GET",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -30,9 +30,9 @@ class MovieRatingCard extends React.Component {
         
       })
         .then((r) => r.json())
-        .then((userObj) =>
+        .then((movieObj) =>
           this.setState(() => ({
-            user: userObj
+            movie: movieObj
           }))
           
         )
@@ -44,13 +44,13 @@ class MovieRatingCard extends React.Component {
     
     return(
         <>
-        {!this.state.user ? <h1>Loading</h1> : 
+        {!this.state.movie ? <h1>Loading</h1> : 
         
-                <div className="rating-card" key={this.props.id}>
+                <div className="profile-rating-card" key={this.props.id}>
 
-                  <NavLink  to={`/users/${this.state.user.id}`} user={this.props.user} >
+                  <NavLink  to={`/movies/${this.state.movie.id}`} user={this.props.user} >
 
-                <h4>{this.state.user.username}: </h4>
+                <h4>{this.state.movie.title}: </h4>
                   </NavLink>
         
 
@@ -71,4 +71,4 @@ class MovieRatingCard extends React.Component {
           }
         
 }
-export default MovieRatingCard
+export default ProfileRatingCard

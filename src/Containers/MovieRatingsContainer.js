@@ -13,7 +13,7 @@ class MovieRatingsContainer extends React.Component{
     
     
     return(
-        <div className="ratings-container">
+        <div className="movie-ratings-container">
             {this.renderRatings()}
         </div>
     )
