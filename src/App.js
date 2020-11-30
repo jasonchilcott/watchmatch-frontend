@@ -6,6 +6,7 @@ import Header from './Components/Header'
 import Signup from "./Components/Signup"
 import Login from "./Components/Login"
 import Rate from './Containers/Rate';
+import Matches from './Containers/Matches';
 import MovieShow from './Containers/MovieShow.js'
 import ProfileShow from './Containers/ProfileShow.js'
 
@@ -85,6 +86,7 @@ class App extends React.Component{
             <Route path="/login" render={()=> <Login loginHandler={this.loginHandler} />} />
             <Route path="/rate" render={()=> <Rate user={this.state.user} />} />
             <Route path="/"  exact render={()=> <Rate user={this.state.user} />} />
+            <Route path="/matches" render={()=> <Matches user={this.state.user} />} />
             <Route path="/movies" render={()=> <MovieShow user={this.state.user} />} />
             <Route path="/users" render={()=> <ProfileShow user={this.state.user} />} />
             <Route path="/profile" exact render={()=> <ProfileShow user={this.state.user} />} /> 

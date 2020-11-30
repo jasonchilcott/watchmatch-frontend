@@ -99,7 +99,7 @@ class Rate extends React.Component {
       <>
         <Search searchDoer={this.searchDoer} />
         {/* <InfiniteScroll
-                dataLength={this.state.restaurants.length} //This is important field to render the next data
+                dataLength={this.state.movies.length} //This is important field to render the next data
                 next={() => console.log("hit bottom")}
                 hasMore={true}
                 loader={<h4>Loading...</h4>}
