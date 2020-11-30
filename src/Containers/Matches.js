@@ -1,4 +1,5 @@
 import React from "react";
+import MatchesContainer from './MatchesContainer'
 
 class Matches extends React.Component {
 
@@ -100,8 +101,12 @@ class Matches extends React.Component {
                 }
             > */}
         {this.state.matches.length > 0 ? (
-          //<MatchesContainer matches={this.state.matches} user={this.props.user} />
-          <h1>Matches</h1>
+          
+          <>
+          <h1>MATCHES</h1>
+          <MatchesContainer matches={this.state.matches} user={this.props.user}/>
+          
+          </>
         ) : (
           <h4>Loading...</h4>
         )}
