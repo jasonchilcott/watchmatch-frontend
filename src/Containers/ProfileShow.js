@@ -20,7 +20,7 @@ class ProfileShow extends React.Component {
       }} />
       <Route path='/profile' exact render={() => {
         
-        return <ProfilePage profileId={this.props.user.id} user={this.props.user}/>
+        return <ProfilePage className='profile-page' profileId={this.props.user.id} user={this.props.user}/>
       }} />
 
       </Switch>

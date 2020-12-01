@@ -1,6 +1,8 @@
 import React from "react";
 import Search from "../Components/Search";
-//import RateSidebar from "../Components/RateSidebar"
+import RateSidebar from "../Components/RateSidebar"
+
+
 import MoviesContainer from "./MoviesContainer";
 //import InfiniteScroll from 'react-infinite-scroll-component';
 
@@ -8,6 +10,8 @@ class Rate extends React.Component {
   state = {
     movies: [],
     search: "",
+    list: "7065199",
+    searchOrList: "list",
     page: 1,
   };
 
@@ -16,8 +20,21 @@ class Rate extends React.Component {
   }
 
   fetchMovies = () => {
-    //const movieUrl = `https://api.themoviedb.org/3/search/movie?api_key=a3c8a67818b95d395055b1c64330a5d4&query=${this.state.search}&page=${this.state.page}&include_adult=false`
-    const movieUrl = `https://api.themoviedb.org/4/list/7065199?page=${this.state.page}&api_key=a3c8a67818b95d395055b1c64330a5d4`;
+    let movieUrl = `https://api.themoviedb.org/4/list/7065199?page=${this.state.page}&api_key=a3c8a67818b95d395055b1c64330a5d4`;
+    switch (this.state.searchOrList) {
+      case "list":
+        movieUrl = `https://api.themoviedb.org/4/list/${this.state.list}?page=${this.state.page}&api_key=a3c8a67818b95d395055b1c64330a5d4`;
+        break;
+      case "search":
+        movieUrl = `https://api.themoviedb.org/3/search/movie?api_key=a3c8a67818b95d395055b1c64330a5d4&language=en-US&query=${this.state.search}&page=${this.state.page}&include_adult=false`
+        
+        break;
+      default:
+        console.log(`search or list is ${this.state.searchOrList}.`);
+    }
+    console.log(this.state.searchOrList, movieUrl)
+    //const movieUrl = `https://api.themoviedb.org/3/search/movie?api_key=a3c8a67818b95d395055b1c64330a5d4&query=${this.state.query}&page=${this.state.page}&include_adult=false`
+    
     // v3: https://api.themoviedb.org/3/list/7065199?api_key=a3c8a67818b95d395055b1c64330a5d4&language=en-US
 
     fetch(
@@ -83,13 +100,27 @@ class Rate extends React.Component {
     );
   };
 
+  sidebarDoer = (list) => {
+    this.setState(
+      {
+        movies: [],
+        list: list,
+        searchOrList: "list",
+        page: 1
+      },
+      this.fetchMovies
+    );
+  };
+
   searchDoer = (search) => {
     this.setState(
       {
         movies: [],
         search: search,
+        searchOrList: "search",
+        page: 1
       },
-      this.fetchMovies()
+      this.fetchMovies
     );
   };
 
@@ -97,25 +128,18 @@ class Rate extends React.Component {
     
     return (
       <>
-        <Search searchDoer={this.searchDoer} />
-        {/* <InfiniteScroll
-                dataLength={this.state.movies.length} //This is important field to render the next data
-                next={() => console.log("hit bottom")}
-                hasMore={true}
-                loader={<h4>Loading...</h4>}
-                endMessage={
-                <p style={{ textAlign: 'center' }}>
-                <b>Yay! You have seen it all</b>
-                </p>
-                }
-            > */}
-        {this.state.movies ? (
+      <div className='rate'>
+        <Search className='search' searchDoer={this.searchDoer} />
+        <RateSidebar className='sidebar' sidebarDoer={this.sidebarDoer}/>
+        {this.state.movies && this.state.movies.length > 0 ? (
           <MoviesContainer movies={this.state.movies} user={this.props.user} />
         ) : (
-          <h4>Loading...</h4>
+          <h2>Loading...</h2>
         )}
         <button onClick={this.fetchMoreDoer}>Load More</button>
-        {/* </InfiniteScroll> */}
+
+      </div>
+        
       </>
     );
   }

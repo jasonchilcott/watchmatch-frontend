@@ -36,8 +36,8 @@ class Signup extends React.Component{
     render(){
         return(
             <>
-            <h4 className="create-account">Create a new account</h4>
             <div className="signup">
+            <h4 className="create-account">Create a new account</h4>
 
             <form className="signup-form" onSubmit={this.localSignupHandler}>
 

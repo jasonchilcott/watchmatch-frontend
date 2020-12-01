@@ -11,10 +11,10 @@ class MovieCard extends React.Component {
     stars: (this.props.rating ? this.props.rating.stars : 0 )
   }
 
-  componentWillMount() {
-    this.getRating()
+  // componentWillMount() {
+  //   this.getRating()
 
-  }
+  // }
 
 
   getRating = () => {
@@ -101,7 +101,7 @@ class MovieCard extends React.Component {
   render() {
     const movie = this.props.movie
     let poster_url = "no_poster.png"
-    console.log(this.props.rating)
+    
 
     if (movie.poster_path) {
       poster_url = `https://image.tmdb.org/t/p/w185${movie.poster_path}`
@@ -111,11 +111,11 @@ class MovieCard extends React.Component {
                 <div className="movie-card" key={movie.id}>
                   <NavLink to={`movies/${movie.id}`} user={this.props.user} movie={movie}>
                     <img src={poster_url} alt={movie.title}/>
-                    <h2>{movie.title}</h2>
+                    <h4>{movie.title}</h4>
 
                   </NavLink>
                     <ReactStars
-                      className="stars"
+                      className="rate-page-stars"
                       count={5}
                       value={this.state.stars}
                       isHalf={true}

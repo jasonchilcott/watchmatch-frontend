@@ -100,16 +100,23 @@ class Matches extends React.Component {
                 </p>
                 }
             > */}
-        {this.state.matches.length > 0 ? (
           
+          <>
+          <div className='matches'>
+        {this.state.matches.length > 0 ? (
           <>
           <h1>MATCHES</h1>
           <MatchesContainer matches={this.state.matches} user={this.props.user}/>
           
           </>
-        ) : (
-          <h4>Loading...</h4>
-        )}
+
+
+          ) : (
+            <h4>Loading...</h4>
+          )}
+          </div>
+          
+          </>
         
         {/* </InfiniteScroll> */}
       </>

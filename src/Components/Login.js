@@ -25,8 +25,8 @@ class Login extends React.Component{
     render(){
         return(
             <>
-            <p>Please Log in:</p>
             <div className="login">
+            <p>Please Log in:</p>
 
             <form className="login-form" onSubmit={this.localLoginHandler}>
                 
