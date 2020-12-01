@@ -1,5 +1,7 @@
 import React from "react";
 import Search from "../Components/Search";
+import RateSidebar from "../Components/RateSidebar"
+
 
 import MoviesContainer from "./MoviesContainer";
 //import InfiniteScroll from 'react-infinite-scroll-component';
@@ -99,7 +101,7 @@ class Rate extends React.Component {
       <>
       <div className='rate'>
         <Search className='search' searchDoer={this.searchDoer} />
-        
+        <RateSidebar className='sidebar'/>
         {this.state.movies ? (
           <MoviesContainer movies={this.state.movies} user={this.props.user} />
         ) : (

@@ -14,7 +14,8 @@
   position: absolute;
   left: 0px;
   width: 128px;
-  padding: 20px;
+  padding-top: 25px;
+  padding-left: 35px;
 }
 .header {
   font-family: "Helvetica Now", "Helvetica Neue", "Helvetica";
@@ -25,18 +26,23 @@
   border-bottom-color: gray;
   border-bottom-width: 1px;
   position: fixed;
-  z-index: 1;
+  z-index: 100;
+  top: 0px;
 }
 
 .navbar {
   position: fixed;
-  height: 180px;
+  
   right: 0px;
-  padding: 60px;
+  padding: 35px;
 }
 
 .rate {
-  padding-top: 185px;
+  padding-top: 220px;
+}
+
+.login, .signup {
+  padding-top: 220px;
 }
 
 .movies-container {
@@ -50,16 +56,32 @@
   margin-left: 15%;
 }
 
-.profile-page {
-  top: 200px;
-  padding-top: 185px;
-  grid-gap: 2rem;
+.matches {
+  
+  padding-top: 200px;
   margin-top: 20px;
   margin-bottom: 60px;
   margin-right: 15%;
   margin-left: 15%;
 }
+.profile-page-div {
+  
+  padding-top: 200px;
+  margin-top: 20px;
+  margin-bottom: 60px;
+  margin-right: 15%;
+  margin-left: 15%;
+  z-index: 10;
+}
 
+.rate-page-stars {
+  padding: 20px;
+}
+
+[class*="react-stars-wrapper"] {
+  width: 120px;
+  padding-left: 120px;
+}
 
 
 
@@ -75,9 +97,13 @@
 
 .search {
   position: fixed;
-  top: 250px;
-  z-index: 1
+  top: 181px;
+  z-index: 200;
+  width: 100%;
+  background-color: black;
+  padding: 10px;
 }
+
 .sidebar {
   height: 100%; /* Full-height: remove this if you want "auto" height */
   width: 15%; /* Set the width of the sidebar */

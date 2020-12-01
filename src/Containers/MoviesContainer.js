@@ -1,6 +1,5 @@
 import React from "react"
 import MovieCard from "../Components/MovieCard"
-import RateSidebar from "../Components/RateSidebar"
 
 class MoviesContainer extends React.Component{
 
@@ -18,7 +17,6 @@ class MoviesContainer extends React.Component{
 
     return(
         <div className="movies-container">
-          <RateSidebar className='sidebar'/>
             {this.renderMovies()}
         </div>
 
