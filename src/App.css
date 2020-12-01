@@ -108,6 +108,30 @@
   margin-left: 15%;
 }
 
+.good-match {
+  color: rgb(0, 255, 0);
+  font-size: 36px;
+}
+
+.match-card{
+  padding-bottom: 50px;
+  line-height: 60%;
+}
+
+
+.okay-match {
+  
+  font-size: 36px;
+}
+
+
+.bad-match {
+  color: red;
+  font-size: 36px;
+}
+
+
+
 .movie-ratings-container {
   display: grid;
   grid-template-rows: repeat(auto, 200px);
