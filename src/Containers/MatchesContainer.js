@@ -15,7 +15,7 @@ class MatchesContainer extends React.Component {
     );
 
     return sortedMatches.map((match) => {
-      console.log(match);
+      
       return <MatchCard key={match.id} match={match} user={this.props.user} />;
     });
 
@@ -35,6 +35,7 @@ class MatchesContainer extends React.Component {
 
     //maps through all shared movies, comparing the stars rating the user and match have given
     let compareRatings = sharedMovies.map((matchRating) => {
+
       // the current user's rating for the movie the match rated
       let userRating = user.ratings.find(
         (rating) => rating.movie_id === matchRating.movie_id
@@ -49,7 +50,7 @@ class MatchesContainer extends React.Component {
     });
 
     //margin of error based on how many of the same movie/show/etc two people have both rated
-    let highestPossibleMatch = (1 - 1 / sharedMovies.length) * 100;
+    let highestPossibleMatch = ((1 - 1 / sharedMovies.length) * 100);
 
     let ratingsDiffArray = compareRatings;
 

@@ -4,10 +4,14 @@ import MovieRatingCard from '../Components/MovieRatingCard'
 class MovieRatingsContainer extends React.Component{
 
 
-  renderRatings = () => this.props.movie.ratings.map((rating) => {
+  renderRatings = () => {
+    console.log(this.props)
+    const filteredRatings = this.props.movie.ratings.filter((rating => rating.user_id !== this.props.user.id))
+    console.log(filteredRatings)
+    return filteredRatings.map((rating) => {
       return <MovieRatingCard key={rating.id} movie_id={rating.movie_id} user_id={rating.user_id} stars={rating.stars}/>
     })
-  
+  }
   
   render() {
     
