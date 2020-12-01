@@ -10,6 +10,8 @@ class Rate extends React.Component {
   state = {
     movies: [],
     search: "",
+    list: "7065199",
+    searchOrList: "list",
     page: 1,
   };
 
@@ -18,8 +20,21 @@ class Rate extends React.Component {
   }
 
   fetchMovies = () => {
-    //const movieUrl = `https://api.themoviedb.org/3/search/movie?api_key=a3c8a67818b95d395055b1c64330a5d4&query=${this.state.search}&page=${this.state.page}&include_adult=false`
-    const movieUrl = `https://api.themoviedb.org/4/list/7065199?page=${this.state.page}&api_key=a3c8a67818b95d395055b1c64330a5d4`;
+    let movieUrl = `https://api.themoviedb.org/4/list/7065199?page=${this.state.page}&api_key=a3c8a67818b95d395055b1c64330a5d4`;
+    switch (this.state.searchOrList) {
+      case "list":
+        movieUrl = `https://api.themoviedb.org/4/list/${this.state.list}?page=${this.state.page}&api_key=a3c8a67818b95d395055b1c64330a5d4`;
+        break;
+      case "search":
+        movieUrl = `https://api.themoviedb.org/3/search/movie?api_key=a3c8a67818b95d395055b1c64330a5d4&language=en-US&query=${this.state.search}&page=${this.state.page}&include_adult=false`
+        
+        break;
+      default:
+        console.log(`search or list is ${this.state.searchOrList}.`);
+    }
+    console.log(this.state.searchOrList, movieUrl)
+    //const movieUrl = `https://api.themoviedb.org/3/search/movie?api_key=a3c8a67818b95d395055b1c64330a5d4&query=${this.state.query}&page=${this.state.page}&include_adult=false`
+    
     // v3: https://api.themoviedb.org/3/list/7065199?api_key=a3c8a67818b95d395055b1c64330a5d4&language=en-US
 
     fetch(
@@ -90,8 +105,10 @@ class Rate extends React.Component {
       {
         movies: [],
         search: search,
+        searchOrList: "search",
+        page: 1
       },
-      this.fetchMovies()
+      this.fetchMovies
     );
   };
 
