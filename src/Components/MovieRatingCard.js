@@ -40,7 +40,12 @@ class MovieRatingCard extends React.Component {
 
 
   render() {
-    
+    let avatar_url = "no_poster.png"
+    if (this.state.user) {
+      if (this.state.user.avatar_url) {
+        avatar_url = this.state.user.avatar_url
+      }
+    }
     
     return(
         <>
@@ -49,6 +54,7 @@ class MovieRatingCard extends React.Component {
                 <div className="rating-card" key={this.props.id}>
 
                   <NavLink  to={`/users/${this.state.user.id}`} user={this.props.user} >
+                  <img className="movie-rating-avatar" src={`${avatar_url}`} alt={`${this.state.user.username}'s avatar`}/>
 
                 <h4>{this.state.user.username}: </h4>
                   </NavLink>

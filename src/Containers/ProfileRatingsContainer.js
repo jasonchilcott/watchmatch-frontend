@@ -5,7 +5,7 @@ class ProfileRatingsContainer extends React.Component{
 
 
   renderRatings = () => this.props.profile.ratings.map((rating) => {
-      return <ProfileRatingCard key={rating.id} movie_id={rating.movie_id} user_id={rating.user_id} stars={rating.stars}/>
+      return <ProfileRatingCard key={rating.id} movie_id={rating.movie_id} user_id={this.props.user.id} stars={rating.stars}/>
     })
   
   
@@ -14,8 +14,13 @@ class ProfileRatingsContainer extends React.Component{
     
     return(
         <div className="profile-ratings-container">
-          <h2>Ratings:</h2>
-            {this.renderRatings()}
+          {this.props.profile.ratings ? (<>
+          
+          {this.renderRatings()}
+          </>)
+          :
+          (<h4>Loading... </h4>)
+          }
         </div>
     )
 

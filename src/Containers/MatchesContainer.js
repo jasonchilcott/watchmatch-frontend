@@ -54,9 +54,7 @@ class MatchesContainer extends React.Component {
     let ratingsDiffArray = compareRatings;
 
     //the mean of the weighted difference values of each shared rated movie between user/match, converted to a percentage
-    let compatibility =
-      (1 - ratingsDiffArray.reduce((a, b) => a + b) / ratingsDiffArray.length) *
-      100;
+    let compatibility = ((1 - ratingsDiffArray.reduce((a, b) => a + b) / ratingsDiffArray.length) * 100);
 
     //returns margin of error if margin of error is greater than match percentage
     if (compatibility > highestPossibleMatch) {

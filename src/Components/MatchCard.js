@@ -16,7 +16,7 @@ class MatchCard extends React.Component {
               user={this.props.user}
             >
               <h2>
-                {Math.round(this.props.match.compatibility)}% with {this.props.match.username}
+                {parseFloat(this.props.match.compatibility).toFixed(1)}% with {this.props.match.username}
               </h2>
             </NavLink>
           </div>

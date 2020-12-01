@@ -100,6 +100,18 @@ class Rate extends React.Component {
     );
   };
 
+  sidebarDoer = (list) => {
+    this.setState(
+      {
+        movies: [],
+        list: list,
+        searchOrList: "list",
+        page: 1
+      },
+      this.fetchMovies
+    );
+  };
+
   searchDoer = (search) => {
     this.setState(
       {
@@ -118,11 +130,11 @@ class Rate extends React.Component {
       <>
       <div className='rate'>
         <Search className='search' searchDoer={this.searchDoer} />
-        <RateSidebar className='sidebar'/>
-        {this.state.movies ? (
+        <RateSidebar className='sidebar' sidebarDoer={this.sidebarDoer}/>
+        {this.state.movies && this.state.movies.length > 0 ? (
           <MoviesContainer movies={this.state.movies} user={this.props.user} />
         ) : (
-          <h4>Loading...</h4>
+          <h2>Loading...</h2>
         )}
         <button onClick={this.fetchMoreDoer}>Load More</button>
 

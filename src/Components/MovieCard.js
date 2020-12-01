@@ -111,7 +111,7 @@ class MovieCard extends React.Component {
                 <div className="movie-card" key={movie.id}>
                   <NavLink to={`movies/${movie.id}`} user={this.props.user} movie={movie}>
                     <img src={poster_url} alt={movie.title}/>
-                    <h2>{movie.title}</h2>
+                    <h4>{movie.title}</h4>
 
                   </NavLink>
                     <ReactStars

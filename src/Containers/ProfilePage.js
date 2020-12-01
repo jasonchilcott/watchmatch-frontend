@@ -8,6 +8,7 @@ class ProfilePage extends React.Component {
   };
 
   componentDidMount() {
+    
     this.fetchProfile()
   }
 
@@ -49,6 +50,7 @@ class ProfilePage extends React.Component {
         <h3 className="profile-one-line">{profile.one_line}</h3>
         <p className="profile-detailed-bio">{profile.detailed_bio}</p>
         <br/>
+        <h2>Ratings:</h2>
       <ProfileRatingsContainer profile={profile} user={this.props.user}/>
       </div>
       }
