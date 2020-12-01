@@ -42,7 +42,7 @@ class ProfilePage extends React.Component {
       <>
       {!profile ? <h1>Loading</h1> : 
       
-      <div className="profile-page" key={profile.id}>
+        <div className="profile-page-div" key={profile.id}>
         
         <img className="profile-avatar" src={`${profile.avatar_url}`} alt={`${profile.username}'s avatar`}/>
         <h1 className="profile-username">{profile.username}</h1>

@@ -1,6 +1,6 @@
 import React from "react";
 import Search from "../Components/Search";
-//import RateSidebar from "../Components/RateSidebar"
+
 import MoviesContainer from "./MoviesContainer";
 //import InfiniteScroll from 'react-infinite-scroll-component';
 
@@ -97,25 +97,18 @@ class Rate extends React.Component {
     
     return (
       <>
-        <Search searchDoer={this.searchDoer} />
-        {/* <InfiniteScroll
-                dataLength={this.state.movies.length} //This is important field to render the next data
-                next={() => console.log("hit bottom")}
-                hasMore={true}
-                loader={<h4>Loading...</h4>}
-                endMessage={
-                <p style={{ textAlign: 'center' }}>
-                <b>Yay! You have seen it all</b>
-                </p>
-                }
-            > */}
+      <div className='rate'>
+        <Search className='search' searchDoer={this.searchDoer} />
+        
         {this.state.movies ? (
           <MoviesContainer movies={this.state.movies} user={this.props.user} />
         ) : (
           <h4>Loading...</h4>
         )}
         <button onClick={this.fetchMoreDoer}>Load More</button>
-        {/* </InfiniteScroll> */}
+
+      </div>
+        
       </>
     );
   }
