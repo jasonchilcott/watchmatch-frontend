@@ -52,9 +52,14 @@ class ProfilePage extends React.Component {
         
         <img className="profile-avatar" src={`${profile.avatar_url}`} alt={`${profile.username}'s avatar`}/>
         <h1 className="profile-username">{profile.username}</h1>
+
         {profile.ratings ? <h2 className="profile-ratings-number">{`${profile.ratings.length} ratings`}</h2> : null}
         
         {profile.one_line ? <h3 className="profile-one-line">{profile.one_line}</h3> : <h3>This user hasn't added a one-liner yet.</h3>}
+        {profile.twitter ? <a href={'https://twitter.com/' + profile.twitter } className="profile-social">Twitter: @{profile.twitter}</a>
+        : <p>This user hasn't added a Twitter account yet.</p>}
+        {profile.instagram ? <a href={'https://instagram.com/' + profile.instagram } className="profile-social">Instagram: @{profile.detailed_bio}</a> 
+        : <p>This user hasn't added an Instagram account yet.</p>}
         {/* <p className="profile-detailed-bio">{profile.detailed_bio}</p> */}
         {profile.detailed_bio ? <p className="profile-detailed-bio">{profile.detailed_bio}</p> : <p>This user hasn't added a detailed bio yet.</p>}
         <br/>
