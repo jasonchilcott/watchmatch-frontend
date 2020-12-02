@@ -74,7 +74,7 @@ class Signup extends React.Component {
               value={this.state.one_line}
               onChange={this.changeHandler}
             />
-            <br></br>
+            {/* <br></br>
             <br></br>
             <label>Detailed bio. Tell anything else you want everyone to know about you here: </label>
             <textarea
@@ -84,7 +84,7 @@ class Signup extends React.Component {
               onChange={this.changeHandler}
               rows={10}
           cols={35}
-            />
+            /> */}
             <br></br>
             <br></br>
             <label>URL for your avatar. Can be you, a drawing you like, a movie screenshot, whatever: </label>
@@ -97,7 +97,7 @@ class Signup extends React.Component {
             />
             <br></br>
             <br></br>
-            <input type="submit" value="sign up" />
+            <input type="submit" value="Sign up" />
           </form>
           <br />
           <NavLink to="/login">OR LOG IN</NavLink>
