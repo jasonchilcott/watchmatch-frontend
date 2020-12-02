@@ -124,7 +124,7 @@ class Search extends React.Component {
         <div className="drop-down">
               <select className="form-control" name="genre" onChange={this.genreHandler} value={this.state.value} onSelect={this.genreHandler}>{
                 genresArr.map((genreObj) => {
-                  return <option value={genreObj.id}>{genreObj.name}</option>
+                  return <option key={genreObj.id} value={genreObj.id}>{genreObj.name}</option>
                 })
               }</select>
             </div>
