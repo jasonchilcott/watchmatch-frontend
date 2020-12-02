@@ -21,24 +21,26 @@ class Rate extends React.Component {
   }
 
   fetchMovies = () => {
-    let movieUrl = `https://api.themoviedb.org/4/list/7065199?page=${this.state.page}&api_key=a3c8a67818b95d395055b1c64330a5d4`;
+
+    const apiKey = "a3c8a67818b95d395055b1c64330a5d4"
+    let movieUrl = `https://api.themoviedb.org/4/list/7065199?page=${this.state.page}&api_key=${apiKey}`;
     switch (this.state.searchOrList) {
       case "list":
-        movieUrl = `https://api.themoviedb.org/4/list/${this.state.list}?page=${this.state.page}&api_key=a3c8a67818b95d395055b1c64330a5d4`;
+        movieUrl = `https://api.themoviedb.org/4/list/${this.state.list}?page=${this.state.page}&api_key=${apiKey}`;
         break;
       case "search":
-        movieUrl = `https://api.themoviedb.org/3/search/movie?api_key=a3c8a67818b95d395055b1c64330a5d4&language=en-US&query=${this.state.search}&page=${this.state.page}&include_adult=false`
+        movieUrl = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&language=en-US&query=${this.state.search}&page=${this.state.page}&include_adult=false`
         break;
       case "genre":
-        movieUrl = `https://api.themoviedb.org/3/discover/movie?api_key=a3c8a67818b95d395055b1c64330a5d4&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${this.state.page}&with_genres=${this.state.genre}`
+        movieUrl = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${this.state.page}&with_genres=${this.state.genre}`
         break;
       default:
         console.log(`search or list is ${this.state.searchOrList}.`);
     }
     console.log(this.state.searchOrList, movieUrl)
-    //const movieUrl = `https://api.themoviedb.org/3/search/movie?api_key=a3c8a67818b95d395055b1c64330a5d4&query=${this.state.query}&page=${this.state.page}&include_adult=false`
+    //const movieUrl = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${this.state.query}&page=${this.state.page}&include_adult=false`
     
-    // v3: https://api.themoviedb.org/3/list/7065199?api_key=a3c8a67818b95d395055b1c64330a5d4&language=en-US
+    // v3: https://api.themoviedb.org/3/list/7065199?api_key=${apiKey}&language=en-US
 
     fetch(
       movieUrl //, {
@@ -68,6 +70,7 @@ class Rate extends React.Component {
         title: movie.title,
         poster_path: movie.poster_path,
         overview: movie.overview,
+        release_date: movie.release_date
       };
 
       const token = localStorage.getItem("token");

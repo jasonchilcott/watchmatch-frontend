@@ -124,6 +124,7 @@ class MoviePage extends React.Component {
               <div>
 
             <h1 className="movie-page-title">{movie.title}</h1>
+        <h3>Released on: {movie.release_date}</h3>
 
             <ReactStars
               className="stars"
