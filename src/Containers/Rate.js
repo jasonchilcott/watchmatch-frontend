@@ -37,7 +37,7 @@ class Rate extends React.Component {
       default:
         console.log(`search or list is ${this.state.searchOrList}.`);
     }
-    console.log(this.state.searchOrList, movieUrl)
+    //console.log(this.state.searchOrList, movieUrl)
     //const movieUrl = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${this.state.query}&page=${this.state.page}&include_adult=false`
     
     // v3: https://api.themoviedb.org/3/list/7065199?api_key=${apiKey}&language=en-US

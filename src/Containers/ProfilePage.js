@@ -30,7 +30,8 @@ class ProfilePage extends React.Component {
         .then((profileObj) =>
           this.setState(() => ({
             profile: profileObj
-          }))
+          }),
+          console.log(profileObj))
           
         )
         .catch((error) => console.error(error));
@@ -39,12 +40,12 @@ class ProfilePage extends React.Component {
 
   render() {
     let profile = this.state.profile
-    console.log(this.state.profile)
+    //console.log(this.state.profile)
     
     return (
       
       <>
-      {!profile ? <h1>Loading</h1> : 
+      {!profile ? <h1>Loading...</h1> : 
 
       
       
@@ -52,9 +53,17 @@ class ProfilePage extends React.Component {
         
         <img className="profile-avatar" src={`${profile.avatar_url}`} alt={`${profile.username}'s avatar`}/>
         <h1 className="profile-username">{profile.username}</h1>
+
         {profile.ratings ? <h2 className="profile-ratings-number">{`${profile.ratings.length} ratings`}</h2> : null}
-        <h3 className="profile-one-line">{profile.one_line}</h3>
-        <p className="profile-detailed-bio">{profile.detailed_bio}</p>
+        
+        {profile.one_line ? <h3 className="profile-one-line">{profile.one_line}</h3> : <h3>This user hasn't added a one-liner yet.</h3>}
+        {profile.twitter ? <a href={'https://twitter.com/' + profile.twitter } className="profile-social">Twitter: @{profile.twitter}</a>
+        : <p>This user hasn't added a Twitter account yet.</p>}
+        <br></br>
+        {profile.instagram ? <a href={'https://instagram.com/' + profile.instagram } className="profile-social">Instagram: @{profile.instagram}</a> 
+        : <p>This user hasn't added an Instagram account yet.</p>}
+        {/* <p className="profile-detailed-bio">{profile.detailed_bio}</p> */}
+        {profile.detailed_bio ? <p className="profile-detailed-bio">{profile.detailed_bio}</p> : <p>This user hasn't added a detailed bio yet.</p>}
         <br/>
         <h2>Ratings:</h2>
       <ProfileRatingsContainer profile={profile} user={this.props.user}/>

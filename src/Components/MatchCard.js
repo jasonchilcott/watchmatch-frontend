@@ -39,7 +39,7 @@ class MatchCard extends React.Component {
           <h1>Loading...</h1>
         ) : (
           <div className="match-card" key={this.props.match.id}>
-            <NavLink
+            <NavLink className="match-link"
               to={`/users/${this.props.match.id}`}
               user={this.props.user}
             >
@@ -51,7 +51,7 @@ class MatchCard extends React.Component {
 
               {this.colorCompatibility()}
 
-              <h2>{this.props.match.username}</h2>
+              <h2 >{this.props.match.username}</h2>
               {this.props.match.ratings ? <h2 className="match-ratings-number">{`${this.props.match.ratings.length} ratings`}</h2> : null}
             </NavLink>
           </div>

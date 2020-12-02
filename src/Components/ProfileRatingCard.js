@@ -41,10 +41,7 @@ class ProfileRatingCard extends React.Component {
           <div className="profile-rating-card" key={this.props.id}>
             <NavLink to={`/movies/${movie.id}`} user={this.props.user}>
               <img className='profile-rating-poster' src={poster_url} alt={movie.title} />
-
-              <h4>{movie.title}</h4>
             </NavLink>
-
             <ReactStars
               className="stars"
               count={5}
@@ -54,6 +51,10 @@ class ProfileRatingCard extends React.Component {
               size={24}
               activeColor="#ff0000"
             />
+              <NavLink to={`/movies/${movie.id}`} user={this.props.user}>
+              <p className="movie-title">{movie.title}</p>
+              </NavLink>
+
           </div>
         </>
       );

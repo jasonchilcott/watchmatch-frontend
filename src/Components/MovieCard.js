@@ -89,7 +89,6 @@ class MovieCard extends React.Component {
             movie={movie}
           >
             <img className="rate-movie-poster" src={poster_url} alt={movie.title} />
-            <h4>{movie.title}</h4>
           </NavLink>
           <ReactStars
             className="rate-page-stars"
@@ -100,6 +99,13 @@ class MovieCard extends React.Component {
             size={24}
             activeColor="#ff0000"
           />
+          <NavLink
+            to={`movies/${movie.id}`}
+            user={this.props.user}
+            movie={movie}
+          >
+            <p className="movie-title">{movie.title}</p>
+          </NavLink>
         </div>
       </>
     );

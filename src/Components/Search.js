@@ -109,19 +109,20 @@ class Search extends React.Component {
     return (
       <><div className="search">
 
-        <form onSubmit={this.searchHandler}>
+        <form onSubmit={this.searchHandler} className="form-group">
           <input
+            className="form-control"
             type="text"
             name="search"
             placeholder="Search"
             value={this.state.search}
             onChange={this.changeHandler}
           />
-          <input type="submit" value="Search" />
+          <button className="btn search-btn" type="submit">Search</button>
         </form>
-        <h4> OR </h4>
+        <p className="divider"> OR </p>
         <div className="drop-down">
-              <select name="genre" onChange={this.genreHandler} value={this.state.value} onSelect={this.genreHandler}>{
+              <select className="form-control" name="genre" onChange={this.genreHandler} value={this.state.value} onSelect={this.genreHandler}>{
                 genresArr.map((genreObj) => {
                   return <option value={genreObj.id}>{genreObj.name}</option>
                 })

@@ -13,8 +13,8 @@
 .logo {
   position: absolute;
   left: 0px;
-  width: 128px;
-  padding-top: 25px;
+  width: 192px;
+  padding-top: 10px;
   padding-left: 35px;
 }
 .header {
@@ -37,6 +37,10 @@
   padding: 35px;
 }
 
+li.nav-item:not(:last-child) {
+  border-right: 1px solid white;
+}
+
 .rate {
   padding-top: 220px;
   padding-bottom: 100px;
@@ -44,6 +48,11 @@
 
 .login, .signup {
   padding-top: 220px;
+}
+
+.signup {
+  width: 50%;
+  margin: 0 auto;
 }
 
 .movies-container {
@@ -98,7 +107,7 @@
 
 [class*="react-stars-wrapper"] {
   width: 120px;
-  
+  margin: 0 auto;
 }
 
 .link {
@@ -203,13 +212,13 @@
 
 .search {
   position: fixed;
-  top: 181px;
+  top: 180px;
   z-index: 200;
   width: 100%;
   background-color: black;
-  padding: 10px;
+  padding: 8px;
   display: flex;
-  height: 30px;
+  height: 54px;
   
 }
 
@@ -218,7 +227,7 @@
   width: 15%; /* Set the width of the sidebar */
   position: fixed; /* Fixed Sidebar (stay in place on scroll) */
   z-index: 1; /* Stay on top */
-  top: 200px; /* Stay at the top */
+  top: 210px; /* Stay at the top */
   left: 0;
   background-color: rgb(0, 0, 0); /* Black */
   overflow-x: hidden; /* Disable horizontal scroll */
@@ -226,4 +235,82 @@
   /* border-right-style: solid;
   border-right-color: gray;
   border-right-width: 1px; */
+}
+
+a.nav-link {
+  font-style: italic;
+}
+
+a.nav-link:hover {
+  color: white;
+  text-shadow: 0 0 5px #ffffffbb;
+
+  font-weight: bold;
+}
+
+button.btn.search-btn {
+  display: inline;
+  float: right;
+  background-color: white;
+  margin-right: 15px;
+}
+
+.search .form-control {
+  display: inline;
+  width: 200px;
+}
+
+.search input {
+  margin-right: 5px;
+}
+
+p.divider {
+  margin: 5px;
+  font-weight: bold;
+}
+
+.search .drop-down {
+  margin-left: 10px;
+}
+
+.sidebar .link {
+  padding: 5px;
+}
+
+.sidebar li.link:hover {
+
+  color: white;
+  text-shadow: 0 0 5px #ffffffbb;
+
+  font-weight: bold;
+}
+
+p.movie-title {
+  padding-top: 2px;
+  padding-bottom: 20px;
+  font-size: 20px;
+  text-decoration: none;
+
+}
+
+p.movie-title:hover {
+  color: white;
+  text-shadow: 0 0 5px #ffffffbb;
+  text-decoration: none;
+
+  font-weight: bold;
+}
+
+a:hover {
+  color: white;
+  text-shadow: 0 0 5px #ffffffbb;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.match-link:hover {
+  color: white;
+  text-shadow: 0 0 10px #ffffffbb;
+  text-decoration: none;
+  font-weight: bold;
 }

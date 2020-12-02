@@ -6,20 +6,21 @@ class Navbar extends React.Component {
     return (
       <>
           <div className="navbar">
-            <ul>
-              <li>
-                <NavLink exact activeClassName="active" to="/">
+            <ul className="nav"> 
+              <li className="nav-item">
+                <NavLink exact activeClassName="active" className="nav-link" to="/">
                   RATE
                 </NavLink>
             </li>
-            <li>
-                <NavLink activeClassName="active" to="/matches">
+            <li className="nav-item">
+                <NavLink activeClassName="active" className="nav-link" to="/matches">
                   MATCHES
                 </NavLink>
             </li>
-            <li>
+            <li className="nav-item">
                 <NavLink
                   activeClassName="active"
+                  className="nav-link"
                   to="/profile"
                   user={this.props.user}
                 >
@@ -27,15 +28,16 @@ class Navbar extends React.Component {
                 </NavLink>
             </li>
             {this.props.user === {} ? (
-                <li>
-                  <NavLink activeClassName="active" to="/login">
+                <li className="nav-item">
+                  <NavLink activeClassName="active" className="nav-link" to="/login">
                     LOGIN
                   </NavLink>
                 </li>
             ) : (
-                <li>
+                <li className="nav-item">
                   <NavLink
                     activeClassName="active"
+                    className="nav-link"
                     to="/logout"
                   onClick={this.props.logMeOut}
                   >
