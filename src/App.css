@@ -2,14 +2,7 @@
   text-align: center;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+
 .logo {
   position: absolute;
   left: 0px;
@@ -151,6 +144,7 @@ li.nav-item:not(:last-child) {
 }
 
 .match-card{
+  
   padding-bottom: 50px;
   line-height: 60%;
 }
@@ -177,25 +171,25 @@ li.nav-item:not(:last-child) {
 
 .movie-ratings-container {
   display: grid;
-  grid-template-rows: repeat(auto, 200px);
+  grid-template-rows: repeat(auto, 250px);
   grid-template-columns: repeat(5, 1fr);
   grid-gap: 2rem;
   margin-top: 20px;
   margin-bottom: 60px;
-  margin-right: 15%;
-  margin-left: 15%;
+  
 }
 
 .profile-avatar {
   max-height: 400px;
+  max-width: 800px;
   border-width: .5px;
   border-color: rgba(245, 245, 245, 0.5);
   border-style: solid;
 }
 
 .movie-rating-avatar {
-  max-height: 280px;
-  max-width: 185;
+  max-height: 250px;
+  max-width: 250px;
   border-width: .5px;
   border-color: rgba(245, 245, 245, 0.5);
   border-style: solid;
@@ -258,11 +252,16 @@ button.btn.search-btn {
 
 .search .form-control {
   display: inline;
-  width: 200px;
+  
 }
+
+
 
 .search input {
   margin-right: 5px;
+  margin-left: 15px;
+  width: 400px;
+  
 }
 
 p.divider {
@@ -272,6 +271,7 @@ p.divider {
 
 .search .drop-down {
   margin-left: 10px;
+  width: 125px;
 }
 
 .sidebar .link {
@@ -314,4 +314,17 @@ a:hover {
   text-shadow: 0 0 10px #ffffffbb;
   text-decoration: none;
   font-weight: bold;
+}
+
+.movie-card {
+  height: 400px;
+}
+
+.profile-rating-card {
+  height: 400px;
+}
+
+.profile {
+  padding-left: 15%;
+  padding-right:15%;
 }

@@ -48,12 +48,21 @@ class MatchCard extends React.Component {
                 src={`${avatar_url}`}
                 alt={`${this.props.match.username}'s avatar`}
               />
+              </NavLink>
 
               {this.colorCompatibility()}
+
+              <div className="match-info">
+              <NavLink className="match-link"
+              to={`/users/${this.props.match.id}`}
+              user={this.props.user}
+            >
 
               <h2 >{this.props.match.username}</h2>
               {this.props.match.ratings ? <h2 className="match-ratings-number">{`${this.props.match.ratings.length} ratings`}</h2> : null}
             </NavLink>
+
+              </div>
           </div>
         )}
       </>
