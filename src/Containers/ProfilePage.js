@@ -30,7 +30,8 @@ class ProfilePage extends React.Component {
         .then((profileObj) =>
           this.setState(() => ({
             profile: profileObj
-          }))
+          }),
+          console.log(profileObj))
           
         )
         .catch((error) => console.error(error));
@@ -58,7 +59,8 @@ class ProfilePage extends React.Component {
         {profile.one_line ? <h3 className="profile-one-line">{profile.one_line}</h3> : <h3>This user hasn't added a one-liner yet.</h3>}
         {profile.twitter ? <a href={'https://twitter.com/' + profile.twitter } className="profile-social">Twitter: @{profile.twitter}</a>
         : <p>This user hasn't added a Twitter account yet.</p>}
-        {profile.instagram ? <a href={'https://instagram.com/' + profile.instagram } className="profile-social">Instagram: @{profile.detailed_bio}</a> 
+        <br></br>
+        {profile.instagram ? <a href={'https://instagram.com/' + profile.instagram } className="profile-social">Instagram: @{profile.instagram}</a> 
         : <p>This user hasn't added an Instagram account yet.</p>}
         {/* <p className="profile-detailed-bio">{profile.detailed_bio}</p> */}
         {profile.detailed_bio ? <p className="profile-detailed-bio">{profile.detailed_bio}</p> : <p>This user hasn't added a detailed bio yet.</p>}
