@@ -39,6 +39,7 @@ class Signup extends React.Component {
             <label>Choose a username: </label>
             <input
               type="text"
+              className="form-control"
               name="username"
               placeholder="Username"
               value={this.state.username}
@@ -48,6 +49,7 @@ class Signup extends React.Component {
             <br></br>
             <label>Choose a password: </label>
             <input
+              className="form-control"
               type="password"
               name="password"
               placeholder="Password"
@@ -58,6 +60,7 @@ class Signup extends React.Component {
             <br></br>
             <label>Confirm password: </label>
             <input
+              className="form-control"
               type="password"
               name="confirm_password"
               placeholder="Confirm Password"
@@ -66,8 +69,9 @@ class Signup extends React.Component {
             />
             <br></br>
             <br></br>
-            <label>One line that sums you up, or a catchprhase: </label>
+            <label>One line that sums you up, or a catchphrase: </label>
             <input
+              className="form-control"
               type="text"
               name="one_line"
               placeholder="One line bio"
@@ -89,6 +93,7 @@ class Signup extends React.Component {
             <br></br>
             <label>URL for your avatar. Can be you, a drawing you like, a movie screenshot, whatever: </label>
             <input
+              className="form-control"
               type="text"
               name="avatar_url"
               placeholder="URL of avatar"
@@ -97,7 +102,7 @@ class Signup extends React.Component {
             />
             <br></br>
             <br></br>
-            <input type="submit" value="Sign up" />
+            <button type="submit" class="btn btn-primary">Sign up </button>
           </form>
           <br />
           <NavLink to="/login">OR LOG IN</NavLink>

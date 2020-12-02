@@ -10,7 +10,7 @@ class RateSidebar extends React.Component {
     return (
       <>
         <div className="sidebar">
-          <ul>
+          <ul className="nav flex-column"> 
             <li className='link' onClick={() => this.sidebarHandler("1309")}>IMBD 250</li>
 
             <li className='link' onClick={() => this.sidebarHandler("7065199")}>TSPDT 1000</li>
