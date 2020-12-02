@@ -286,7 +286,8 @@ p.divider {
 }
 
 p.movie-title {
-  padding-top: 10px;
+  padding-top: 2px;
+  padding-bottom: 20px;
   font-size: 20px;
   text-decoration: none;
 
