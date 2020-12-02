@@ -10,6 +10,7 @@ class ProfilePage extends React.Component {
   componentDidMount() {
     
     this.fetchProfile()
+    
   }
 
   fetchProfile = () => {
@@ -38,15 +39,20 @@ class ProfilePage extends React.Component {
 
   render() {
     let profile = this.state.profile
+    console.log(this.state.profile)
+    
     return (
       
       <>
       {!profile ? <h1>Loading</h1> : 
+
+      
       
         <div className="profile-page-div" key={profile.id}>
         
         <img className="profile-avatar" src={`${profile.avatar_url}`} alt={`${profile.username}'s avatar`}/>
         <h1 className="profile-username">{profile.username}</h1>
+        {profile.ratings ? <h2 className="profile-ratings-number">{`${profile.ratings.length} ratings`}</h2> : null}
         <h3 className="profile-one-line">{profile.one_line}</h3>
         <p className="profile-detailed-bio">{profile.detailed_bio}</p>
         <br/>

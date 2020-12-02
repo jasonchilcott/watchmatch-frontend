@@ -13,6 +13,7 @@ class Rate extends React.Component {
     list: "7065199",
     searchOrList: "list",
     page: 1,
+    genre: null
   };
 
   componentDidMount() {
@@ -27,7 +28,9 @@ class Rate extends React.Component {
         break;
       case "search":
         movieUrl = `https://api.themoviedb.org/3/search/movie?api_key=a3c8a67818b95d395055b1c64330a5d4&language=en-US&query=${this.state.search}&page=${this.state.page}&include_adult=false`
-        
+        break;
+      case "genre":
+        movieUrl = `https://api.themoviedb.org/3/discover/movie?api_key=a3c8a67818b95d395055b1c64330a5d4&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${this.state.page}&with_genres=${this.state.genre}`
         break;
       default:
         console.log(`search or list is ${this.state.searchOrList}.`);
@@ -112,6 +115,18 @@ class Rate extends React.Component {
     );
   };
 
+  genreDoer = (genre) => {
+    this.setState(
+      {
+        movies: [],
+        genre: genre,
+        searchOrList: "genre",
+        page: 1
+      },
+      this.fetchMovies
+    );
+  };
+
   searchDoer = (search) => {
     this.setState(
       {
@@ -129,7 +144,7 @@ class Rate extends React.Component {
     return (
       <>
       <div className='rate'>
-        <Search className='search' searchDoer={this.searchDoer} />
+        <Search className='search' searchDoer={this.searchDoer} genreDoer={this.genreDoer}/>
         <RateSidebar className='sidebar' sidebarDoer={this.sidebarDoer}/>
         {this.state.movies && this.state.movies.length > 0 ? (
           <MoviesContainer movies={this.state.movies} user={this.props.user} />

@@ -67,8 +67,8 @@
 }
 
 .match-avatar {
-  max-height: 400px;
-  max-width: 400;
+  max-height: 300px;
+  max-width: 300px;
   border-width: .5px;
   border-color: rgba(245, 245, 245, 0.5);
   border-style: solid;
@@ -208,6 +208,9 @@
   width: 100%;
   background-color: black;
   padding: 10px;
+  display: flex;
+  height: 30px;
+  
 }
 
 .sidebar {

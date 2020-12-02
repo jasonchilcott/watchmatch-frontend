@@ -31,7 +31,7 @@ class MovieRatingCard extends React.Component {
   };
 
   render() {
-    let avatar_url = "no_poster.png";
+    let avatar_url = "/no_poster.png";
     if (this.state.user) {
       if (this.state.user.avatar_url) {
         avatar_url = this.state.user.avatar_url;

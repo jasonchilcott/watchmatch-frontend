@@ -33,9 +33,10 @@ class Signup extends React.Component {
     return (
       <>
         <div className="signup">
-          <h4 className="create-account">Create a new account</h4>
+          <h2 className="create-account">Create a new account</h2>
 
           <form className="signup-form" onSubmit={this.localSignupHandler}>
+            <label>Choose a username: </label>
             <input
               type="text"
               name="username"
@@ -45,6 +46,7 @@ class Signup extends React.Component {
             />
             <br></br>
             <br></br>
+            <label>Choose a password: </label>
             <input
               type="password"
               name="password"
@@ -54,6 +56,7 @@ class Signup extends React.Component {
             />
             <br></br>
             <br></br>
+            <label>Confirm password: </label>
             <input
               type="password"
               name="confirm_password"
@@ -63,24 +66,28 @@ class Signup extends React.Component {
             />
             <br></br>
             <br></br>
+            <label>One line that sums you up, or a catchprhase: </label>
             <input
               type="text"
               name="one_line"
-              placeholder="Sum yourself up with one line or catchphrase"
+              placeholder="One line bio"
               value={this.state.one_line}
               onChange={this.changeHandler}
             />
             <br></br>
             <br></br>
-            <input
-              type="text_area"
+            <label>Detailed bio. Tell anything else you want everyone to know about you here: </label>
+            <textarea
               name="detailed_bio"
-              placeholder="Tell anything else you want us to know about you here"
+              placeholder="Write your whole story"
               value={this.state.detailed_bio}
               onChange={this.changeHandler}
+              rows={10}
+          cols={35}
             />
             <br></br>
             <br></br>
+            <label>URL for your avatar. Can be you, a drawing you like, a movie screenshot, whatever: </label>
             <input
               type="text"
               name="avatar_url"
