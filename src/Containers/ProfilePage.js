@@ -83,15 +83,16 @@ class ProfilePage extends React.Component {
         
       })
         .then((r) => r.json())
-        .then((resp => console.log(resp)
+        .then((profileObj) =>
+          this.setState(() => ({
+            profile: profileObj,
+            editing: false
+
+          }),
           
-//           profileObj) =>
-//           this.setState(() => ({
-//             profile: profileObj
-//           })
-// )
+        )
           
-        ))
+        )
         .catch((error) => console.error(error));
     
   }
