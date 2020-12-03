@@ -102,7 +102,7 @@ class Signup extends React.Component {
             />
             <br></br>
             <br></br>
-            <button type="submit" class="btn btn-primary">Sign up </button>
+            <button type="submit" className="btn btn-primary">Sign up </button>
           </form>
           <br />
           <NavLink to="/login">OR LOG IN</NavLink>
