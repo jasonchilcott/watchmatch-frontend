@@ -61,6 +61,7 @@ class MatchCard extends React.Component {
               <h2 >{this.props.match.username}</h2>
               {this.props.match.ratings ? <h2 className="match-ratings-number">{`${this.props.match.ratings.length} ratings`}</h2> : null}
             </NavLink>
+            {this.props.match.one_line ? <p className="match-one-line">{this.props.match.one_line}</p> : <p>This user hasn't added a one-liner yet.</p>}
 
               </div>
           </div>

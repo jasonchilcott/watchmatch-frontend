@@ -87,6 +87,8 @@ class Matches extends React.Component {
             {this.state.matches.length > 0 ? (
               <>
                 <h1>MATCHES</h1>
+                <br></br>
+                <br></br>
                 <MatchesContainer
                   matches={this.state.matches}
                   user={this.props.user}

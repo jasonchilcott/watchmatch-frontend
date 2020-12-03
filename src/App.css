@@ -65,8 +65,8 @@ li.nav-item:not(:last-child) {
   padding-top: 200px;
   margin-top: 20px;
   margin-bottom: 60px;
-  margin-right: 15%;
-  margin-left: 15%;
+  margin-right: 25%;
+  margin-left: 25%;
 }
 
 .match-avatar {
@@ -145,6 +145,9 @@ li.nav-item:not(:last-child) {
 
 .match-card{
   
+  border-width: .5px;
+  border-color: rgba(245, 245, 245, 0.5);
+  border-style: solid;
   padding-bottom: 50px;
   line-height: 60%;
 }
@@ -246,15 +249,19 @@ a.nav-link:hover {
 button.btn.search-btn {
   display: inline;
   float: right;
-  background-color: white;
+  background-color: rgb(192, 192, 192);
   margin-right: 15px;
 }
 
 .search .form-control {
   display: inline;
+  background-color: rgb(192, 192, 192);
+  
   
 }
-
+button{
+  background-color: rgb(192, 192, 192);
+}
 
 
 .search input {
@@ -275,7 +282,8 @@ p.divider {
 }
 
 .sidebar .link {
-  padding: 5px;
+  padding: 9px;
+  text-align: left;
 }
 
 .sidebar li.link:hover {
