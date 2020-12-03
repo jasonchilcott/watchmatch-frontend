@@ -2,6 +2,7 @@ import React from "react";
 import ProfileRatingsContainer from './ProfileRatingsContainer'
 import { FaInstagram } from 'react-icons/fa';
 import { FaTwitter } from 'react-icons/fa';
+import SharedRatingsContainer from "./SharedRatingsContainer";
 
 
 
@@ -98,6 +99,16 @@ class ProfilePage extends React.Component {
         )
         .catch((error) => console.error(error));
     
+  }
+  sharedRatings = () => {
+    let profile = this.state.profile
+    if (this.state.profile.id !== this.props.user.id) {
+      return (
+      <div>
+      <h2>Movies You Both Rated:</h2> 
+      <SharedRatingsContainer profile={profile} user={this.props.user}/>
+      </div>)
+    }
   }
 
 
@@ -214,7 +225,8 @@ cols={35}
       
         
         <br/>
-        <h2>Ratings:</h2>
+        {this.sharedRatings()}
+        <h2>All Ratings:</h2>
       <ProfileRatingsContainer profile={profile} user={this.props.user}/>
       </div>
       }
