@@ -10,7 +10,7 @@ class Rate extends React.Component {
   state = {
     movies: [],
     search: "",
-    list: "7065199",
+    id: "7065199",
     searchOrList: "list",
     page: 1,
     genre: null
@@ -26,7 +26,7 @@ class Rate extends React.Component {
     let movieUrl = `https://api.themoviedb.org/4/list/7065199?page=${this.state.page}&api_key=${apiKey}`;
     switch (this.state.searchOrList) {
       case "list":
-        movieUrl = `https://api.themoviedb.org/4/list/${this.state.list}?page=${this.state.page}&api_key=${apiKey}`;
+        movieUrl = `https://api.themoviedb.org/4/list/${this.state.id}?page=${this.state.page}&api_key=${apiKey}`;
         break;
       case "search":
         movieUrl = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&language=en-US&query=${this.state.search}&page=${this.state.page}&include_adult=false`
@@ -34,34 +34,41 @@ class Rate extends React.Component {
       case "genre":
         movieUrl = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${this.state.page}&with_genres=${this.state.genre}`
         break;
+      case "person":
+        movieUrl = `https://api.themoviedb.org/3/person/${this.state.id}/movie_credits?api_key=a3c8a67818b95d395055b1c64330a5d4&language=en-US`
+        break
       default:
         console.log(`search or list is ${this.state.searchOrList}.`);
     }
     //console.log(this.state.searchOrList, movieUrl)
     //const movieUrl = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${this.state.query}&page=${this.state.page}&include_adult=false`
+    //https://api.themoviedb.org/3/person/2963/movie_credits?api_key=a3c8a67818b95d395055b1c64330a5d4&language=en-US
     
     // v3: https://api.themoviedb.org/3/list/7065199?api_key=${apiKey}&language=en-US
+     if (this.state.searchOrList === "person") {
+      fetch(
+        movieUrl 
+      )
+        .then((resp) => resp.json())
+        .then((
+          movieData 
+        ) => this.addMoviesToDB(movieData.cast)
+        );
 
+     } else {
     fetch(
-      movieUrl //, {
-      //     headers: {
-      //     Accept: "application/json",
-      //
-      // }
-      // }
+      movieUrl 
     )
       .then((resp) => resp.json())
       .then((
-        movieData //{ this.setState(() => ({
+        movieData 
       ) =>
-        //  movies: [...this.state.movies, ...movieData.results]
-        //}
-        //)
-        //)
+        
 
         this.addMoviesToDB(movieData.results)
       );
   };
+}
 
   addMoviesToDB = (movies) => {
     movies.forEach((movie) => {
@@ -106,12 +113,12 @@ class Rate extends React.Component {
     );
   };
 
-  sidebarDoer = (list) => {
+  sidebarDoer = (type, id) => {
     this.setState(
       {
         movies: [],
-        list: list,
-        searchOrList: "list",
+        id: id,
+        searchOrList: type,
         page: 1
       },
       this.fetchMovies
