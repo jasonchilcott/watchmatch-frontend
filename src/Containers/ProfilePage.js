@@ -54,7 +54,7 @@ class ProfilePage extends React.Component {
 
   editButton = () => {
     if (this.state.profile.id === this.props.user.id) {
-      return <button onClick={() => this.setState({editing: true})}>Edit profile</button>
+      return <button className="btn profile-btn" onClick={() => this.setState({editing: true})}>Edit profile</button>
     }
   }
   changeHandler = (e) => {
@@ -120,10 +120,14 @@ class ProfilePage extends React.Component {
       return (
 
       <div className="profile">
+        <div className="profile-avatar-div">
         <img className="profile-avatar" src={`${profile.avatar_url}`} alt={`${profile.username}'s avatar`}/>
-        <h1 className="profile-username">{profile.username}</h1>
 
+        </div>
+        
+        <div className="profile-info">
         {this.editButton()}
+        <h1 className="profile-username">{profile.username}</h1>
 
         {profile.ratings ? <h2 className="profile-ratings-number">{`${profile.ratings.length} ratings`}</h2> : null}
         
@@ -135,6 +139,8 @@ class ProfilePage extends React.Component {
         : <p>This user hasn't added an Instagram account yet.</p>}
         
         {profile.detailed_bio ? <p className="profile-detailed-bio">{profile.detailed_bio}</p> : <p>This user hasn't added a detailed bio yet.</p>}
+
+        </div>
 
       </div>)
 
