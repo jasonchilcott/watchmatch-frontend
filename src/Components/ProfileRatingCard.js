@@ -12,7 +12,7 @@ class ProfileRatingCard extends React.Component {
   fetchMovie = () => {
     const token = localStorage.getItem("token");
 
-    fetch(`http://localhost:3000/api/v1/movies/${this.props.movie_id}`, {
+    fetch(`https://watchmatch-api.herokuapp.com//api/v1/movies/${this.props.movie_id}`, {
       method: "GET",
       headers: {
         Authorization: `Bearer ${token}`,

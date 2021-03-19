@@ -82,7 +82,7 @@ class Rate extends React.Component {
 
       const token = localStorage.getItem("token");
 
-      fetch("http://localhost:3000/api/v1/movies", {
+      fetch("https://watchmatch-api.herokuapp.com//api/v1/movies", {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,

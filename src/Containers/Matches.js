@@ -13,7 +13,7 @@ class Matches extends React.Component {
   fetchUsers = () => {
     const token = localStorage.getItem("token");
 
-    fetch("http://localhost:3000/api/v1/users", {
+    fetch("https://watchmatch-api.herokuapp.com//api/v1/users", {
       method: "GET",
       headers: {
         Authorization: `Bearer ${token}`,

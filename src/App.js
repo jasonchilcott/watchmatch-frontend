@@ -19,7 +19,7 @@ class App extends React.Component{
   componentDidMount() {
     const token = localStorage.getItem("token")
     if (token && token !== "undefined") {
-      fetch("http://localhost:3000/api/v1/profile", {
+      fetch("https://watchmatch-api.herokuapp.com//api/v1/profile", {
         method: "GET",
         headers: {Authorization: `Bearer ${token}`},
       })
@@ -31,7 +31,7 @@ class App extends React.Component{
   }
 
   signUpHandler = (userObj) => {
-    fetch(`http://localhost:3000/api/v1/users`, {
+    fetch(`https://watchmatch-api.herokuapp.com//api/v1/users`, {
       method: "POST",
       headers:{
         "content-type": "application/json",
@@ -49,7 +49,7 @@ class App extends React.Component{
 
 
   loginHandler = (userInfo) => {
-    fetch(`http://localhost:3000/api/v1/login`,{
+    fetch(`https://watchmatch-api.herokuapp.com//api/v1/login`,{
       method: "POST",
       headers:{
           "content-type": "application/json",
