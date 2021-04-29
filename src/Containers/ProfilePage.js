@@ -30,7 +30,7 @@ class ProfilePage extends React.Component {
     
     
 
-      fetch(`https://watchmatch-api.herokuapp.com//api/v1/users/${this.props.profileId}`, {
+      fetch(`https://watchmatch-api.herokuapp.com/api/v1/users/${this.props.profileId}`, {
         method: "GET",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -76,7 +76,7 @@ class ProfilePage extends React.Component {
 
     const token = localStorage.getItem("token");
 
-    fetch(`https://watchmatch-api.herokuapp.com//api/v1/users/${this.props.user.id}`, {
+    fetch(`https://watchmatch-api.herokuapp.com/api/v1/users/${this.props.user.id}`, {
         method: "PATCH",
         headers: {
           Authorization: `Bearer ${token}`,
