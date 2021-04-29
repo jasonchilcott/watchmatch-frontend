@@ -85,7 +85,7 @@ class Rate extends React.Component {
       fetch("https://watchmatch-api.herokuapp.com/api/v1/movies", {
         method: "POST",
         headers: {
-          Authorization: `Bearer ${token}`,
+          "Authorization": `Bearer ${token}`,
           "Content-Type": "application/json",
           Accept: "application/json",
         },
