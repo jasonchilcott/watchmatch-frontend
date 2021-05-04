@@ -7,6 +7,11 @@ class Navbar extends React.Component {
       <>
           <div className="navbar">
             <ul className="nav"> 
+              {(Object.keys(this.props.user).length === 0 && this.props.user.constructor === Object) || !this.props.user ? (
+                  <li className="nav-item">
+                  </li>
+              ) : (
+                <>
               <li className="nav-item">
                 <NavLink exact activeClassName="active" className="nav-link" to="/">
                   RATE
@@ -27,13 +32,6 @@ class Navbar extends React.Component {
                   PROFILE
                 </NavLink>
             </li>
-            {this.props.user === {} ? (
-                <li className="nav-item">
-                  <NavLink activeClassName="active" className="nav-link" to="/login">
-                    LOGIN
-                  </NavLink>
-                </li>
-            ) : (
                 <li className="nav-item">
                   <NavLink
                     activeClassName="active"
@@ -44,6 +42,7 @@ class Navbar extends React.Component {
                     LOGOUT
                   </NavLink>
                 </li>
+                </>
               )}
           </ul>
         </div>
