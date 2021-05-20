@@ -56,14 +56,21 @@ class App extends React.Component{
           accepts: "application/json",
         },
         body: JSON.stringify({user: userInfo})
-      })
-      .then(resp => resp.json())
+      }).then((resp) =>{
+      return resp.json().then((json) => {
+        if(!resp.ok){throw json}
+    })
+      
       .then(data => {
         localStorage.setItem("token", data.jwt)
         this.setState({user: data.user}, () => this.props.history.push(`/rate`) )
       },
       )
+      .catch((json)=>console.log(json))
     }
+  )
+}
+
 
   logMeOut = () => {
     localStorage.removeItem("token")
