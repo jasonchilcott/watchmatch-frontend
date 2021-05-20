@@ -56,17 +56,15 @@ class App extends React.Component{
           accepts: "application/json",
         },
         body: JSON.stringify({user: userInfo})
-      }).then((resp) =>{
-      return resp.json().then((json) => {
-        if(!resp.ok){throw json}
-    })
-      
-      .then(data => {
-        localStorage.setItem("token", data.jwt)
-        this.setState({user: data.user}, () => this.props.history.push(`/rate`) )
-      },
-      )
-      .catch((json)=>console.log(json))
+      }).then(async (resp) =>{
+      try {
+          const json = await resp.json();
+          if (!resp.ok) { throw json; }
+          localStorage.setItem("token", json.jwt);
+          this.setState({ user: json.user }, () => this.props.history.push(`/rate`));
+        } catch (json) {
+          return console.log(json);
+        }
     }
   )
 }
