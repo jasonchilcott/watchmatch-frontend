@@ -9,6 +9,15 @@ class Login extends React.Component{
     loginError: this.props.loginError
   }
 
+  componentDidUpdate(prevProps) {
+    // Typical usage (don't forget to compare props):
+    if (this.props.loginError !== prevProps.loginError) {
+      this.setState(()=>({
+        loginError: this.props.loginError
+      }))
+    }
+  }
+
   changeHandler = (e) => {
     this.setState({[e.target.name]: e.target.value})
   }

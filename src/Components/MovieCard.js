@@ -36,7 +36,6 @@ class MovieCard extends React.Component {
     const token = localStorage.getItem("token");
 
     if (this.state.userRatingId && this.state.stars !== rating) {
-      console.log("patch");
       fetch(`https://watchmatch-api.herokuapp.com/api/v1/ratings/${this.state.userRatingId}`, {
         method: "PATCH",
         headers: {
@@ -53,7 +52,6 @@ class MovieCard extends React.Component {
           })
         );
     } else if (!this.state.userRatingId) {
-      console.log("post", rating, this.state.stars);
       fetch("https://watchmatch-api.herokuapp.com/api/v1/ratings", {
         method: "POST",
         headers: {
