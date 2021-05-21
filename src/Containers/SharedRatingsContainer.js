@@ -16,8 +16,7 @@ class SharedRatingsContainer extends React.Component{
       currentUserMovies.includes(rating.movie_id)
     );
     sharedMovies.length === 0 ?  <p>You have no shared movies with this user.</p> :
-    console.log(sharedMovies)
-    return sharedMovies.map((rating) => {
+    sharedMovies.map((rating) => {
       return <ProfileRatingCard key={rating.id} movie_id={rating.movie_id} user_id={this.props.user.id} stars={rating.stars}/>
     })
   }

@@ -218,7 +218,6 @@ cols={35}
 
   render() {
     let profile = this.state.profile
-    //console.log(this.state.profile)
     
     return (
       

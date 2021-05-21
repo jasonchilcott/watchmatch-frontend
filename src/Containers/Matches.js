@@ -62,7 +62,6 @@ class Matches extends React.Component {
     const currentUser = this.props.user;
     const usersMinusSelf = users.filter((user) => user.id !== currentUser.id);
     const filteredUsers = this.haveSharedMovies(usersMinusSelf);
-    console.log(filteredUsers);
     this.setState(() => ({ matches: [...filteredUsers] }));
   };
 
