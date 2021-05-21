@@ -14,6 +14,7 @@ import ProfileShow from './Containers/ProfileShow.js'
 class App extends React.Component{
   state={
     user: {},
+    loginError: null
   }
 
   componentDidMount() {
@@ -63,7 +64,7 @@ class App extends React.Component{
           localStorage.setItem("token", json.jwt);
           this.setState({ user: json.user }, () => this.props.history.push(`/rate`));
         } catch (json) {
-          return console.log(json);
+          this.setState({loginError: json});
         }
     }
   )
@@ -88,14 +89,14 @@ class App extends React.Component{
         <div className="content-wrapper">
           <Switch>
             <Route path="/signup" render={()=> <Signup signUpHandler={this.signUpHandler}/>} />
-            <Route path="/login" render={()=> <Login loginHandler={this.loginHandler} />} />
+            <Route path="/login" render={()=> <Login loginHandler={this.loginHandler} loginError={this.state.loginError}/>} />
             <Route path="/rate" render={()=> <Rate user={this.state.user} />} />
             <Route path="/"  exact render={()=> <Rate user={this.state.user} />} />
             <Route path="/matches" render={()=> <Matches user={this.state.user} />} />
             <Route path="/movies" render={()=> <MovieShow user={this.state.user} />} />
             <Route path="/users" render={()=> <ProfileShow user={this.state.user} />} />
             <Route path="/profile" exact render={()=> <ProfileShow user={this.state.user} />} /> 
-            <Route path="/logout" render={()=> <Login loginHandler={this.loginHandler} logMeOut={this.logMeOut}/> }/>
+            <Route path="/logout" render={()=> <Login loginHandler={this.loginHandler} logMeOut={this.logMeOut} loginError={this.state.loginError}/> }/>
 
           </Switch>
         </div>

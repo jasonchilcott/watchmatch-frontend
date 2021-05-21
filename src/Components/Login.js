@@ -5,7 +5,8 @@ import { NavLink } from 'react-router-dom'
 class Login extends React.Component{
   state={
     username: "",
-    password: ""
+    password: "",
+    loginError: this.props.loginError
   }
 
   changeHandler = (e) => {
@@ -21,6 +22,11 @@ class Login extends React.Component{
       password: ""
     }))
   }    
+
+  handleErrors = () => {
+    return <p className='error'> {this.state.loginError.message}</p>
+  
+}
   
   render(){
     return(
@@ -41,6 +47,7 @@ class Login extends React.Component{
         <br>
         </br>
         <input type="submit" input="true" value="Log In" />
+        { this.state.loginError ? this.handleErrors() : null }
       
       </form>
       <br/>

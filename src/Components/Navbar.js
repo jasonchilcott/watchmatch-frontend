@@ -34,10 +34,10 @@ class Navbar extends React.Component {
             </li>
                 <li className="nav-item">
                   <NavLink
+                    onClick={this.props.logMeOut}
                     activeClassName="active"
                     className="nav-link"
-                    to="/logout"
-                  onClick={this.props.logMeOut}
+                    to="/login"
                   >
                     LOGOUT
                   </NavLink>
