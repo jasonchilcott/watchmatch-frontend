@@ -200,7 +200,7 @@ cols={35}
     className="form-control"
     type="text"
     name="instagram"
-    placeholder={user.instagram ? user.instagram : "Instargram username"}
+    placeholder={user.instagram ? user.instagram : "Instagram username"}
     value={this.state.instagram}
     onChange={this.changeHandler}
   />

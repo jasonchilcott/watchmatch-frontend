@@ -39,12 +39,17 @@ class App extends React.Component{
         accepts: "application/json"
       },
       body: JSON.stringify({user: userObj})
-    })
-      .then(resp => resp.json())
-      .then(data => {
-        localStorage.setItem("token", data.jwt)
-        this.setState({user: data.user}, () => this.props.history.push(`/rate`) )
-      },
+      }).then(async (resp) =>{
+        try {
+            const json = await resp.json();
+            if (!resp.ok) { throw json; }
+            localStorage.setItem("token", json.jwt);
+            this.setState({ user: json.user }, () => this.props.history.push(`/rate`));
+          } catch (json) {
+            this.setState({signupError: json.errors});
+          }
+        
+      }
     )
   }
 
@@ -88,7 +93,7 @@ class App extends React.Component{
         <Header user={this.state.user} logMeOut={this.logMeOut}/>
         <div className="content-wrapper">
           <Switch>
-            <Route path="/signup" render={()=> <Signup signUpHandler={this.signUpHandler}/>} />
+            <Route path="/signup" render={()=> <Signup signUpHandler={this.signUpHandler} signupError={this.state.signupError}/>} />
             <Route path="/login" render={()=> <Login loginHandler={this.loginHandler} loginError={this.state.loginError}/>} />
             <Route path="/rate" render={()=> <Rate user={this.state.user} />} />
             <Route path="/"  exact render={()=> <Rate user={this.state.user} />} />

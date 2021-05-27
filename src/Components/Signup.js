@@ -9,25 +9,46 @@ class Signup extends React.Component {
     avatar_url: "",
     one_line: "",
     detailed_bio: "",
+    signupError: this.props.signupError
   };
 
   changeHandler = (e) => {
     this.setState({ [e.target.name]: e.target.value });
   };
 
+  componentDidUpdate(prevProps) {
+    
+    if (this.props.signupError !== prevProps.signupError) {
+      this.setState(()=>({
+        signupError: this.props.signupError
+      }))
+    }
+  }
+
   localSignupHandler = (e) => {
     e.preventDefault();
-    this.props.signUpHandler(this.state);
+    const userRe = /^([a-zA-Z0-9]){1}([\w]){4,15}$/
+    const passRe = /^[A-Za-z0-9]{4,16}$/
 
-    this.setState(() => ({
-      username: "",
-      password: "",
-      confirm_password: "",
-      avatar_url: "",
-      one_line: "",
-      detailed_bio: "",
-    }));
-  };
+    if (this.state.password !== this.state.confirm_password){
+      this.setState({signupError: "Password must match"})
+    } else if (!userRe.test(this.state.username)){
+      this.setState({signupError: "Choose a valid username"})
+    } else if (!passRe.test(this.state.password)){
+      this.setState({signupError: "Choose a valid password"})
+    } else { 
+      this.props.signUpHandler(this.state);
+  
+      };
+
+    }
+  
+
+  handleSignupError = () => {
+    return <p className='error'> {this.state.signupError}</p>
+}
+
+  // username regex: /^([a-zA-Z0-9]){1}([a-zA-Z0-9\_]){4,15}$/
 
   render() {
     return (
@@ -103,6 +124,7 @@ class Signup extends React.Component {
             <br></br>
             <br></br>
             <button type="submit" className="btn btn-primary">Sign up </button>
+            { this.state.signupError ? this.handleSignupError() : null }
           </form>
           <br />
           <NavLink to="/login">OR LOG IN</NavLink>
