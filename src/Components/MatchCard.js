@@ -27,7 +27,7 @@ class MatchCard extends React.Component {
   };
 
   render() {
-    let avatar_url = "no_poster.png";
+    let avatar_url = "no_avatar.png";
     if (this.props.match) {
       if (this.props.match.avatar_url) {
         avatar_url = this.props.match.avatar_url;

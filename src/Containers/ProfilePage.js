@@ -123,7 +123,7 @@ class ProfilePage extends React.Component {
         <div className="profile-avatar-div">
         {profile.ratings ? <h2 className="profile-ratings-number">{`${profile.ratings.length} ratings`}</h2> : null}
 
-          {profile.avatar_url ? <img className="profile-avatar" src={`${profile.avatar_url}`} alt={`${profile.username}'s avatar`}/> : <img className="profile-avatar" src={'/no_poster.png'} alt={`${profile.username} has not selected an avatar.`}/>}
+          {profile.avatar_url ? <img className="profile-avatar" src={`${profile.avatar_url}`} alt={`${profile.username}'s avatar`}/> : <img className="profile-avatar" src={'/no_avatar.png'} alt={`${profile.username} has not selected an avatar.`}/>}
 
         </div>
         
