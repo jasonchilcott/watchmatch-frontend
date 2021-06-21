@@ -31,7 +31,7 @@ class ProfileRatingCard extends React.Component {
   render() {
     if (this.state.movie) {
       const movie = this.state.movie;
-      let poster_url = "no_poster.png";
+      let poster_url = "../no_poster.png";
       if (movie.poster_path) {
         poster_url = `https://image.tmdb.org/t/p/w342${movie.poster_path}`;
       }

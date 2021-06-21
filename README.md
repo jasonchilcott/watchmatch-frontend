@@ -26,6 +26,3 @@ WATCHMATCH is currently live at https://watchmatch.herokuapp.com/
 - [React Icons](https://www.npmjs.com/package/react-icons) - Social media icons on the user profile pages.
 - [Bootstrap](https://getbootstrap.com) - Used to style buttons and forms.
 
-## Issues & Solutions
-
-...
