@@ -14,22 +14,14 @@ class ProfilePage extends React.Component {
     detailed_bio: this.props.user.detailed_bio || "",
     twitter: this.props.user.twitter || "",
     instagram: this.props.user.instagram || "",
-
-
   };
 
   componentDidMount() {
-    
-    
     this.fetchProfile()
-    
   }
 
   fetchProfile = () => {
     const token = localStorage.getItem("token");
-    
-    
-
       fetch(`https://watchmatch-api.herokuapp.com/api/v1/users/${this.props.profileId}`, {
         method: "GET",
         headers: {
@@ -37,19 +29,14 @@ class ProfilePage extends React.Component {
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-        
-    
-        
       })
         .then((r) => r.json())
         .then((profileObj) =>
           this.setState(() => ({
             profile: profileObj
           }))
-          
         )
         .catch((error) => console.error(error));
-
   };
 
   editButton = () => {
@@ -57,11 +44,11 @@ class ProfilePage extends React.Component {
       return <button className="btn profile-btn" onClick={() => this.setState({editing: true})}>Edit profile</button>
     }
   }
+
   changeHandler = (e) => {
     this.setState({ [e.target.name]: e.target.value });
   };
 
-  
   patchHandler = (e) => {
     e.preventDefault();
     const noAtTwit = this.state.twitter.replace(`@`, "")
@@ -84,14 +71,12 @@ class ProfilePage extends React.Component {
           Accept: "application/json",
         },
         body: JSON.stringify({user: editObj})
-        
       })
         .then((r) => r.json())
         .then((profileObj) =>
           this.setState(() => ({
             profile: profileObj,
             editing: false
-
           }),
           
         )
@@ -115,24 +100,19 @@ class ProfilePage extends React.Component {
 
   editHandler = () => {
     if (this.state.editing === false) {
-
       let profile = this.state.profile
-      return (
 
+      return (
       <div className="profile">
         <div className="profile-avatar-div">
         {profile.ratings ? <h2 className="profile-ratings-number">{`${profile.ratings.length} ratings`}</h2> : null}
-
-          {profile.avatar_url ? <img className="profile-avatar" src={`${profile.avatar_url}`} alt={`${profile.username}'s avatar`}/> : <img className="profile-avatar" src={'/no_avatar.png'} alt={`${profile.username} has not selected an avatar.`}/>}
-
+        {profile.avatar_url ? <img className="profile-avatar" src={`${profile.avatar_url}`} alt={`${profile.username}'s avatar`}/> : <img className="profile-avatar" src={'/no_avatar.png'} alt={`${profile.username} has not selected an avatar.`}/>}
         </div>
         
         <div className="profile-info">
         {this.editButton()}
         <h1 className="profile-username">{profile.username}</h1>
-
         {profile.ratings ? <h2 className="profile-ratings-number">{`${profile.ratings.length} ratings`}</h2> : null}
-        
         {profile.one_line ? <h3 className="profile-one-line">{profile.one_line}</h3> : <h3>This user hasn't added a one-liner yet.</h3>}
         <FaTwitter />{profile.twitter ? <a href={'https://twitter.com/' + profile.twitter } target="_blank" rel="noreferrer" className="profile-social">Twitter: @{profile.twitter}</a>
         : <p>This user hasn't added a Twitter account yet.</p>}
@@ -227,10 +207,6 @@ cols={35}
       {!profile ? <h1>Loading...</h1> : 
       <div className="profile-page-div" key={profile.id}>
         {this.editHandler()}
-
-      
-      
-        
         <br/>
         {this.sharedRatings()}
         <h2>All Ratings:</h2>
